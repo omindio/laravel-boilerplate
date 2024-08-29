@@ -1,0 +1,86 @@
+# Directorios de Laravel y archivos que deben ser ignorados
+/vendor/
+/node_modules/
+/public/hot
+/public/storage
+/storage/*.key
+/storage/framework/cache/data
+/storage/framework/sessions
+/storage/framework/testing
+/storage/framework/views
+/storage/logs
+.env
+.phpunit.result.cache
+Homestead.yaml
+Homestead.json
+/.vagrant
+
+# Archivos específicos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Configuración específica de IDEs y editores de texto
+/.idea/
+/.phpstorm.meta.php
+/.vscode/
+/.env.local
+
+# Cache, logs y otros archivos generados
+/storage/*.key
+/public/hot
+/public/storage
+/storage/framework/cache/data
+/storage/framework/sessions
+/storage/framework/testing
+/storage/framework/views
+/storage/logs
+
+# Configuración y archivos de servicios de Laravel
+.env
+.env.backup
+/.phpunit.result.cache
+
+# Archivos generados por Composer
+/vendor/
+/composer.lock
+
+# Archivos generados por NPM/Yarn
+/node_modules/
+/npm-debug.log*
+/yarn-error.log
+
+# Archivos de compilación y empaquetamiento
+/public/css/app.css
+/public/js/app.js
+/public/mix-manifest.json
+/public/css/*.css
+/public/js/*.js
+
+# Otros archivos y carpetas específicos del desarrollo
+/public/storage
+/storage/*.key
+/storage/oauth-private.key
+/storage/oauth-public.key
+
+# Ignorar archivos de log de Laravel
+*.log
+
+# Cache de PHPUnit y coverage de pruebas
+.phpunit.result.cache
+coverage/
+
+# Archivos específicos de contenedores Docker
+.docker
+docker-compose.override.yml
+
+# Archivos relacionados a dependencias locales y de CI/CD
+/.env.backup
+.env.testing
+/tests/_output/
+
+# Archivos de configuración de servicios externos (ej. servicios cloud)
+.env.*.local
+.env.*.dev
+.env.*.production
+.env.*.staging
+/.phpstorm.meta.php
