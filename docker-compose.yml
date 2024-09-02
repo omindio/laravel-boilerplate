@@ -39,9 +39,19 @@ services:
             - "8081:80"
         networks:
             - laravel
+    redis:
+        image: redis:alpine
+        container_name: laravel-redis
+        ports:
+            - "6379:6379"
+        networks:
+            - laravel
+        volumes:
+            - redis_data:/data
 
 networks:
     laravel:
 
 volumes:
     mysql_data:
+    redis_data:

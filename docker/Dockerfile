@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd \
+    && pecl install redis && docker-php-ext-enable redis \
     && a2enmod rewrite \
     && rm -rf /var/lib/apt/lists/*
 
@@ -44,6 +45,9 @@ RUN chown -R www-data:www-data /var/www/html \
     && chmod -R ug+rwx /var/www/html/storage /var/www/html/bootstrap/cache \
     && chown -R www-data:www-data /var/www/html/public \
     && chmod -R 755 /var/www/html/public
+
+# Generar la documentación de Swagger
+RUN php artisan l5-swagger:generate
 
 # Exponer el puerto 80
 EXPOSE 80

@@ -61,6 +61,7 @@ Thumbs.db
 /storage/*.key
 /storage/oauth-private.key
 /storage/oauth-public.key
+/public/api-docs
 
 # Ignorar archivos de log de Laravel
 *.log

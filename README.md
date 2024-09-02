@@ -14,4 +14,13 @@ DB_PASSWORD=secret
 
 -   docker-compose up -d --build
 
+## Comandos de ayuda
+
 -   docker exec -it laravel-app bash
+-   docker-compose down
+-   php artisan config:clear
+-   php artisan config:cache
+-   php artisan route:clear
+-   php artisan route:cache
+-   php artisan view:clear
+-   php artisan view:cache
