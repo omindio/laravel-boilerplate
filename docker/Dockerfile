@@ -21,6 +21,10 @@ RUN apt-get update && apt-get install -y \
 
 # Configurar php.ini
 COPY ./docker/php/php.ini /usr/local/etc/php/conf.d/
+COPY ./docker/apache/default.conf /etc/apache2/sites-available/000-default.conf
+
+RUN a2ensite 000-default.conf
+RUN a2enmod rewrite
 
 # Instalar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -29,17 +33,17 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 COPY . /var/www/html
 
-# Establecer permisos
-RUN chown -R www-data:www-data /var/www/html
-RUN chmod -R 755 /var/www/html
-
 # Instalar dependencias de Laravel con Composer
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 # Establecer permisos
-RUN chown -R www-data:www-data /var/www/html
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-RUN chmod -R 755 /var/www/html
+RUN chown -R www-data:www-data /var/www/html \
+    && find /var/www/html -type f -exec chmod 644 {} \; \
+    && find /var/www/html -type d -exec chmod 755 {} \; \
+    && chgrp -R www-data /var/www/html/storage /var/www/html/bootstrap/cache \
+    && chmod -R ug+rwx /var/www/html/storage /var/www/html/bootstrap/cache \
+    && chown -R www-data:www-data /var/www/html/public \
+    && chmod -R 755 /var/www/html/public
 
 # Exponer el puerto 80
 EXPOSE 80

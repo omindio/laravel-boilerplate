@@ -5,21 +5,12 @@ services:
             dockerfile: ./docker/Dockerfile
         image: laravel-app
         container_name: laravel-app
-        volumes:
-            - .:/var/www/html
-        networks:
-            - laravel
-
-    apache:
-        image: php:8.2-apache
-        container_name: laravel-apache
         ports:
             - "8080:80"
         volumes:
             - .:/var/www/html
-            - ./docker/apache/default.conf:/etc/apache2/sites-available/000-default.conf
         depends_on:
-            - app
+            - mysql
         networks:
             - laravel
 
