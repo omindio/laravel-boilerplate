@@ -10,6 +10,15 @@ DB_DATABASE=laravel_db
 DB_USERNAME=laravel_user
 DB_PASSWORD=secret
 
+## Configurar vscode
+
+-   Create file settings.json inside .vscode folder on rooth path and add next code:
+
+{
+"php.validate.executablePath": "/usr/local/bin/php",
+"intelephense.environment.phpExecutable": "/usr/local/bin/php"
+}
+
 ## Levantar contenedores
 
 -   docker-compose up -d --build
@@ -22,5 +31,3 @@ DB_PASSWORD=secret
 -   php artisan config:cache
 -   php artisan route:clear
 -   php artisan route:cache
--   php artisan view:clear
--   php artisan view:cache
