@@ -8,7 +8,8 @@ services:
         ports:
             - "8080:80"
         volumes:
-            - .:/var/www/html
+            - .:/var/www/html:delegated
+            - ./vendor:/var/www/html/vendor
         depends_on:
             - mysql
         networks:

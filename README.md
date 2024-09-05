@@ -1,33 +1,70 @@
-## Configurar .env
+# Instalation
 
--   Copiar .env.example y crear un nuevo .env con las variables correctas.
--   Configura las variables para la conexión en la database:
+> [!IMPORTANT]
+> Be sure you have installed docker and vscode.
 
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=laravel_db
-DB_USERNAME=laravel_user
-DB_PASSWORD=secret
+## 1. Configure .env variables
 
-## Configurar vscode
+-   Copy .env.example and create new .env file with the correct variable values.
+-   Pay atention on next variables:
 
+```
+    DB_CONNECTION=mysql
+    DB_HOST=mysql
+    DB_PORT=3306
+    DB_DATABASE=laravel_db
+    DB_USERNAME=laravel_user
+    DB_PASSWORD=secret
+
+    SESSION_DRIVER=redis
+
+    FILESYSTEM_DISK=local
+    QUEUE_CONNECTION=redis
+
+    CACHE_STORE=redis
+
+    REDIS_CLIENT=phpredis
+    REDIS_HOST=redis
+    REDIS_PASSWORD=null
+    REDIS_PORT=6379
+```
+
+## 2. Configure vscode
+
+-   Install next extensions: PHP Intelephense
 -   Create file settings.json inside .vscode folder on rooth path and add next code:
 
-{
-"php.validate.executablePath": "/usr/local/bin/php",
-"intelephense.environment.phpExecutable": "/usr/local/bin/php"
-}
+```
+    {
+        "php.validate.executablePath": "/usr/local/bin/php",
+        "intelephense.environment.phpExecutable": "/usr/local/bin/php"
+    }
+```
 
-## Levantar contenedores
+## 3. Run containers & install dependencies
 
--   docker-compose up -d --build
+```
+    docker-compose up -d --build
+    docker exec -it laravel-app bash
+    composer install
+```
 
-## Comandos de ayuda
+Api endpoint: http://localhost:8080
 
--   docker exec -it laravel-app bash
+## 4. Generate api documentation (Swagger)
+
+```
+    php artisan l5-swagger:generate
+```
+
+You can see api documentation on http://localhost:8080/docs
+
+## 5. Help commands
+
 -   docker-compose down
 -   php artisan config:clear
 -   php artisan config:cache
 -   php artisan route:clear
 -   php artisan route:cache
+-   php artisan view:clear
+-   php artisan view:cache

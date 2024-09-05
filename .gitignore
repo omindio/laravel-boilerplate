@@ -7,7 +7,7 @@
 /storage/framework/cache/data
 /storage/framework/sessions
 /storage/framework/testing
-/storage/framework/views
+#/storage/framework/views
 /storage/logs
 .env
 .phpunit.result.cache
@@ -32,7 +32,7 @@ Thumbs.db
 /storage/framework/cache/data
 /storage/framework/sessions
 /storage/framework/testing
-/storage/framework/views
+#/storage/framework/views
 /storage/logs
 
 # Configuración y archivos de servicios de Laravel
