@@ -1,7 +1,7 @@
 # Installation
 
 > [!IMPORTANT]
-> Be sure you have installed \_ _docker_ _ and _ _vscode_ \_.
+> Be sure you have installed _docker_ and _vscode_.
 
 ## 1. Configure .env variables
 
