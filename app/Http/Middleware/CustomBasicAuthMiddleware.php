@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+class CustomBasicAuthMiddleware
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     */
+    public function handle(Request $request, Closure $next): Response
+    {
+        $username = env('BASIC_AUTH_USERNAME', 'admin');
+        $password = env('BASIC_AUTH_PASSWORD', 'secret');
+
+        $hasValidCredentials = $request->getUser() === $username && $request->getPassword() === $password;
+
+        if (!$hasValidCredentials) {
+            return response('Unauthorized', 401, ['WWW-Authenticate' => 'Basic']);
+        }
+        return $next($request);
+    }
+}

@@ -51,7 +51,13 @@ composer install
 
 Api endpoint: http://localhost:8080
 
-## 4. Generate api documentation (Swagger)
+## 4. Run migrations
+
+```
+php artisan migrate
+```
+
+## 5. Generate api documentation (Swagger)
 
 ```
 php artisan l5-swagger:generate
@@ -59,12 +65,15 @@ php artisan l5-swagger:generate
 
 You can see api documentation on http://localhost:8080/docs
 
-## 5. Help commands
+## 6. Help commands
 
--   docker-compose down
--   php artisan config:clear
--   php artisan config:cache
--   php artisan route:clear
--   php artisan route:cache
--   php artisan view:clear
--   php artisan view:cache
+```
+docker-compose down
+php artisan config:clear
+php artisan cache:clear
+php artisan config:cache
+php artisan route:clear
+php artisan route:cache
+php artisan view:clear
+php artisan view:cache
+```

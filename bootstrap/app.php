@@ -11,6 +11,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->throttleWithRedis();
+        $middleware->alias(['custom.auth.basic' => \App\Http\Middleware\CustomBasicAuthMiddleware::class]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
