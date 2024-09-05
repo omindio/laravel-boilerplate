@@ -1,52 +1,52 @@
-# Instalation
+# Installation
 
 > [!IMPORTANT]
 > Be sure you have installed docker and vscode.
 
 ## 1. Configure .env variables
 
--   Copy .env.example and create new .env file with the correct variable values.
+-   Copy **.env.example** and create new **.env** file with the correct variable values.
 -   Pay atention on next variables:
 
 ```
-    DB_CONNECTION=mysql
-    DB_HOST=mysql
-    DB_PORT=3306
-    DB_DATABASE=laravel_db
-    DB_USERNAME=laravel_user
-    DB_PASSWORD=secret
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel_db
+DB_USERNAME=laravel_user
+DB_PASSWORD=secret
 
-    SESSION_DRIVER=redis
+SESSION_DRIVER=redis
 
-    FILESYSTEM_DISK=local
-    QUEUE_CONNECTION=redis
+FILESYSTEM_DISK=local
+QUEUE_CONNECTION=redis
 
-    CACHE_STORE=redis
+CACHE_STORE=redis
 
-    REDIS_CLIENT=phpredis
-    REDIS_HOST=redis
-    REDIS_PASSWORD=null
-    REDIS_PORT=6379
+REDIS_CLIENT=phpredis
+REDIS_HOST=redis
+REDIS_PASSWORD=null
+REDIS_PORT=6379
 ```
 
 ## 2. Configure vscode
 
--   Install next extensions: PHP Intelephense
--   Create file settings.json inside .vscode folder on rooth path and add next code:
+-   Install next extensions: **PHP Intelephense**
+-   Create file **settings.json** inside **.vscode** folder on root path and add next code:
 
 ```
-    {
-        "php.validate.executablePath": "/usr/local/bin/php",
-        "intelephense.environment.phpExecutable": "/usr/local/bin/php"
-    }
+{
+    "php.validate.executablePath": "/usr/local/bin/php",
+    "intelephense.environment.phpExecutable": "/usr/local/bin/php"
+}
 ```
 
 ## 3. Run containers & install dependencies
 
 ```
-    docker-compose up -d --build
-    docker exec -it laravel-app bash
-    composer install
+docker-compose up -d --build
+docker exec -it laravel-app bash
+composer install
 ```
 
 Api endpoint: http://localhost:8080
