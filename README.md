@@ -1,7 +1,7 @@
 # Installation
 
 > [!IMPORTANT]
-> Be sure you have installed docker and vscode.
+> Be sure you have installed \_ _docker_ _ and _ _vscode_ \_.
 
 ## 1. Configure .env variables
 
@@ -54,7 +54,7 @@ Api endpoint: http://localhost:8080
 ## 4. Generate api documentation (Swagger)
 
 ```
-    php artisan l5-swagger:generate
+php artisan l5-swagger:generate
 ```
 
 You can see api documentation on http://localhost:8080/docs
