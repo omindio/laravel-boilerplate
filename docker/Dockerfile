@@ -1,4 +1,3 @@
-# Usar la imagen oficial de PHP con Apache
 FROM php:8.2-apache
 
 WORKDIR /var/www/html
