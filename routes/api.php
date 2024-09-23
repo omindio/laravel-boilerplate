@@ -8,9 +8,12 @@ Route::middleware(['throttle:api'])->group(function () {
         return response()->json(['status' => 'ok']);
     });
 
-    Route::post('/auth/login', [AuthController::class, 'login']);
+    Route::middleware(['web'])->group(function () {
+        Route::post('/auth/spa-login', [AuthController::class, 'spaLogin']);
+    });
 
     Route::middleware('auth:sanctum')->group(function () {
-        Route::post('/auth/logout', [AuthController::class, 'logout']);
+        Route::post('/auth/spa-logout', [AuthController::class, 'spaLogout']);
+        Route::get('/auth/user', [AuthController::class, 'user']);
     });
 });

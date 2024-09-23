@@ -36,6 +36,8 @@ services:
         environment:
             PMA_HOST: mysql
             MYSQL_ROOT_PASSWORD: root
+            PMA_ABSOLUTE_URI: http://localhost:8081
+            PMA_FORCE_SSL: false
         ports:
             - "8081:80"
         networks:

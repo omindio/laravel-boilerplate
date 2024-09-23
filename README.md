@@ -57,7 +57,14 @@ Api endpoint: http://localhost:8080
 php artisan migrate
 ```
 
-## 5. Generate api documentation (Swagger)
+## 5. Run seeders
+
+```
+php artisan db:seed --class=RolesSeeder
+php artisan db:seed --class=AdminUserSeeder
+```
+
+## 6. Generate api documentation (Swagger)
 
 ```
 php artisan l5-swagger:generate
@@ -65,7 +72,7 @@ php artisan l5-swagger:generate
 
 You can see api documentation on http://localhost:8080/docs
 
-## 6. Help commands
+## 7. Help commands
 
 ```
 docker-compose down
@@ -75,8 +82,11 @@ php artisan cache:clear
 php artisan config:cache
 php artisan route:clear
 php artisan route:cache
+
 php artisan view:clear
 php artisan view:cache
 
 php artisan route:list
+
+php artisan db:seed
 ```
