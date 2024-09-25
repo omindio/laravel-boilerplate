@@ -33,9 +33,9 @@ class AuthController extends Controller
                 'name' => $user->name,
                 'email' => $user->email,
                 'created_at' => $user->created_at,
+                'roles' => $user->roles->pluck('name'),
+                'permissions' => $user->permissions->pluck('name'),
             ],
-            'roles' => $user->roles->pluck('name'),
-            'permissions' => $user->permissions->pluck('name'),
         ]);
     }
 
@@ -58,9 +58,9 @@ class AuthController extends Controller
                 'name' => $user->name,
                 'email' => $user->email,
                 'created_at' => $user->created_at,
+                'roles' => $user->roles->pluck('name'),
+                'permissions' => $user->permissions->pluck('name'),
             ],
-            'roles' => $user->roles->pluck('name'),
-            'permissions' => $user->permissions->pluck('name'),
         ]);
     }
 }
