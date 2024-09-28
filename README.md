@@ -27,6 +27,16 @@ REDIS_CLIENT=phpredis
 REDIS_HOST=redis
 REDIS_PASSWORD=null
 REDIS_PORT=6379
+
+RESEND_API_KEY=
+
+FRONTEND_URL=
+
+HCAPTCHA_SECRET=
+
+SANCTUM_STATEFUL_DOMAINS="localhost:3000, localhost"
+
+CORS_ALLOWED_ORIGINS="http://localhost:3000, http://localhost"
 ```
 
 ## 2. Configure vscode

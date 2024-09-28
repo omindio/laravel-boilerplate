@@ -12,6 +12,9 @@ Route::middleware(['throttle:api'])->group(function () {
         Route::post('/auth/spa-login', [AuthController::class, 'spaLogin']);
     });
 
+    Route::post('/auth/forgot-password', [AuthController::class, 'forgotPassword'])->middleware('throttle.forgot.password');
+    Route::post('/auth/reset-password', [AuthController::class, 'resetPassword']);
+
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('/auth/spa-logout', [AuthController::class, 'spaLogout']);
         Route::get('/auth/user', [AuthController::class, 'user']);

@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->throttleWithRedis();
         $middleware->statefulApi();
         $middleware->alias(['custom.auth.basic' => \App\Http\Middleware\CustomBasicAuthMiddleware::class]);
+        $middleware->alias(['throttle.forgot.password' => \App\Http\Middleware\ThrottleForgotPasswordRequests::class]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //TODO: Revisar en pruebas reales si estas excepciones son las correctas y devuelven los mensajes correctos

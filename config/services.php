@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'hcaptcha' => [
+        'secret' => env('HCAPTCHA_SECRET'),
+    ],
+
 ];
