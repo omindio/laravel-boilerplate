@@ -1,77 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Responses\ApiErrorResponse;
 use App\Http\Responses\ApiSuccessResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Notifications\ResetPasswordNotification;
 use App\Models\User;
 use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\Controller;
 
-//TODO: Revisar para añadir el parser de objetos para la respuesta json ejemplo el usuario que enviamos en la autenticacion tambien para otros metodos
-//TODO: Añadir documentacion swagger y hacer la prueba httponly con swagger
-//TODO: Añadir la gestion de try catch para cuando esten operativos servicios.
-//TODO: Gestion de excepciones y de la validacion de los datos
-//TODO: como se gestiona la cantida de recuperar contraseña que un usuario puede enviar
-//TODO: Hacer directorio Auth, y añadir SpaAuthController y ForgotPasswordController
-class AuthController extends Controller
+class ForgotPasswordController extends Controller
 {
-    public function spaLogin(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
-
-        if (!Auth::guard('web')->attempt($request->only('email', 'password'))) {
-            return ApiErrorResponse::send('Invalid credentials', [], 401);
-        }
-
-        $request->session()->regenerate();
-
-        $user = Auth::user();
-
-        return ApiSuccessResponse::send([
-            'user' => [
-                'name' => $user->name,
-                'email' => $user->email,
-                'created_at' => $user->created_at,
-                'roles' => $user->roles->pluck('name'),
-                'permissions' => $user->permissions->pluck('name'),
-            ],
-        ]);
-    }
-
-    public function spaLogout(Request $request)
-    {
-        Auth::guard('web')->logout();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return ApiSuccessResponse::send([], 'Successfully logged out');
-    }
-
-    public function user()
-    {
-        $user = Auth::user();
-
-        return ApiSuccessResponse::send([
-            'user' => [
-                'name' => $user->name,
-                'email' => $user->email,
-                'created_at' => $user->created_at,
-                'roles' => $user->roles->pluck('name'),
-                'permissions' => $user->permissions->pluck('name'),
-            ],
-        ]);
-    }
-
     public function forgotPassword(Request $request)
     {
         $request->validate([

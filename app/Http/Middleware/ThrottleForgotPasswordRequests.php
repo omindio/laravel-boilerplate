@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Http\Request;
 use App\Http\Responses\ApiErrorResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Routing\Middleware\ThrottleRequests;
