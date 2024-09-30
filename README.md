@@ -99,4 +99,6 @@ php artisan view:cache
 php artisan route:list
 
 php artisan db:seed
+
+php artisan queue:work redis
 ```
