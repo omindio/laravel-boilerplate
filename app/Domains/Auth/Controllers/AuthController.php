@@ -2,28 +2,25 @@
 
 namespace App\Domains\Auth\Controllers;
 
-use App\Shared\Http\Responses\ApiSuccessResponse;
-use Illuminate\Support\Facades\Auth;
 use App\Shared\Http\Controllers\Controller;
+use App\Domains\Auth\Services\AuthService;
 
 class AuthController extends Controller
 {
-    public function user()
-    {
-        $user = Auth::user();
 
-        return ApiSuccessResponse::send([
-            'user' => [
-                'name' => $user->name,
-                'email' => $user->email,
-                'created_at' => $user->created_at,
-                'roles' => $user->roles->pluck('name'),
-                'permissions' => $user->permissions->pluck('name'),
-            ],
-        ]);
+    protected $authService;
+
+    public function __construct(AuthService $authService)
+    {
+        $this->authService = $authService;
     }
 
-    // public function logout() {}
+    public function user()
+    {
+        return $this->authService->user();
+    }
 
     // public function login() {}
+    // public function logout() {}
+
 }
