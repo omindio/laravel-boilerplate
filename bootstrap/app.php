@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Responses\ApiErrorResponse;
+use App\Shared\Http\Responses\ApiErrorResponse;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use Illuminate\Http\Request;
+use App\Domains\Auth\Middlewares\CustomBasicAuthMiddleware;
+use App\Domains\Auth\Middlewares\ThrottleForgotPasswordRequests;
 
+//TODO: Revisar añadir un error 500 si no hay condicion de excepcion
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         api: __DIR__ . '/../routes/api.php',
@@ -14,8 +16,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->throttleWithRedis();
         $middleware->statefulApi();
-        $middleware->alias(['custom.auth.basic' => \App\Http\Middleware\CustomBasicAuthMiddleware::class]);
-        $middleware->alias(['throttle.forgot.password' => \App\Http\Middleware\ThrottleForgotPasswordRequests::class]);
+        $middleware->alias(['custom.auth.basic' => CustomBasicAuthMiddleware::class]);
+        $middleware->alias(['throttle.forgot.password' => ThrottleForgotPasswordRequests::class]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //TODO: Revisar en pruebas reales si estas excepciones son las correctas y devuelven los mensajes correctos

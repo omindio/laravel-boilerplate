@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Domains\Auth\Middlewares;
 
 use Closure;
-use App\Http\Responses\ApiErrorResponse;
+use App\Shared\Http\Responses\ApiErrorResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Support\Facades\RateLimiter;

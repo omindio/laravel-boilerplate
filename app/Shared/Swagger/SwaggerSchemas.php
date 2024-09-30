@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Swagger;
+namespace App\Shared\Swagger;
 
+//TODO: Revisar de introducir los schemas por dominio
 use OpenApi\Annotations as OA;
+
 /**
  * @OA\Info(
  *     title="My API",
@@ -40,6 +42,4 @@ use OpenApi\Annotations as OA;
  *     }
  * )
  */
-class SwaggerSchemas
-{
-}
+class SwaggerSchemas {}

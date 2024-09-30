@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Domains\Auth\Controllers;
 
-use App\Http\Responses\ApiErrorResponse;
-use App\Http\Responses\ApiSuccessResponse;
+use App\Shared\Http\Responses\ApiErrorResponse;
+use App\Shared\Http\Responses\ApiSuccessResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
+use App\Shared\Http\Controllers\Controller;
 
 //TODO: Revisar para añadir el parser de objetos para la respuesta json ejemplo el usuario que enviamos en la autenticacion tambien para otros metodos
 //TODO: Añadir documentacion swagger y hacer la prueba httponly con swagger

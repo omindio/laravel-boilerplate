@@ -38,10 +38,12 @@ return [
                 /*
                  * Absolute paths to directory containing the swagger annotations are stored.
                  */
-                'annotations' => [
-                    base_path('app/Swagger'),
-                    base_path('app/Http/Controllers'),
-                ],
+                'annotations' => array_merge(
+                    [
+                        base_path('app/Shared/Swagger'),
+                    ],
+                    glob(base_path('app/Domains/*/Controllers'))
+                )
             ],
         ],
     ],
@@ -61,7 +63,7 @@ return [
              * Middleware allows to prevent unexpected access to API documentation
              */
             'middleware' => [
-                'api' => ['custom.auth.basic'],
+                'api' => [\App\Domains\Auth\Middlewares\CustomBasicAuthMiddleware::class],
                 'asset' => [],
                 'docs' => [],
                 'oauth2_callback' => [],

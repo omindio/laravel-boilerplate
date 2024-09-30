@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Domains\Auth\Controllers;
 
-use App\Http\Responses\ApiSuccessResponse;
+use App\Shared\Http\Responses\ApiSuccessResponse;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
+use App\Shared\Http\Controllers\Controller;
 
 class AuthController extends Controller
 {

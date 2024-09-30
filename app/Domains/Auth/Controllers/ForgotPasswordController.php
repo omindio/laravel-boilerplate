@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Domains\Auth\Controllers;
 
-use App\Http\Responses\ApiErrorResponse;
-use App\Http\Responses\ApiSuccessResponse;
+use App\Shared\Http\Responses\ApiErrorResponse;
+use App\Shared\Http\Responses\ApiSuccessResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use App\Notifications\ResetPasswordNotification;
-use App\Models\User;
+use App\Domains\Auth\Notifications\ResetPasswordNotification;
+use App\Domains\Users\Models\User;
 use Illuminate\Support\Facades\Http;
-use App\Http\Controllers\Controller;
+use App\Shared\Http\Controllers\Controller;
 
 class ForgotPasswordController extends Controller
 {

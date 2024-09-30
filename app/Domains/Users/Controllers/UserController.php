@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Domains\Users\Controllers;
 
-use Illuminate\Http\Request;
+use App\Shared\Http\Controllers\Controller;
 
 /**
  * @OA\Info(
