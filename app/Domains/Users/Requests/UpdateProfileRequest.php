@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Domains\Auth\Requests;
+namespace App\Domains\Users\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends FormRequest
+class UpdateProfileRequest extends FormRequest
 {
     public function authorize()
     {
@@ -14,8 +14,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|string|email',
-            'password' => 'required|string'
+            'name' => 'required|string|max:255',
         ];
     }
 }
