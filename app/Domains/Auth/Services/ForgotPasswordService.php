@@ -12,9 +12,12 @@ use App\Shared\Services\CaptchaService;
 use Illuminate\Support\Facades\Hash;
 use App\Domains\Auth\Exceptions\InvalidTokenException;
 use App\Shared\Exceptions\BaseException;
+use App\Shared\Traits\MapsPasswordConfirmation;
 
 class ForgotPasswordService
 {
+    use MapsPasswordConfirmation;
+
     protected $captchaService;
     protected $userRepository;
 
@@ -44,8 +47,11 @@ class ForgotPasswordService
 
     public function resetPassword(Request $request)
     {
+        $credentials =
+            $this->mapPasswordConfirmation($request->only('email', 'password', 'passwordConfirmation', 'token'));
+
         $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
+            $credentials,
             function ($user, $password) {
                 $hashedPassword
                     = Hash::make($password);

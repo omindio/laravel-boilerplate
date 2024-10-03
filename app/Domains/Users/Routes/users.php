@@ -8,8 +8,9 @@ Route::group(
     ['prefix' => 'users'],
     function () {
         Route::middleware('auth:sanctum')->group(function () {
-            Route::put('/password', [UpdateProfileController::class, 'update']);
-            Route::put('/profile', [UpdatePasswordController::class, 'update']);
+            Route::put('/password', [UpdatePasswordController::class, 'update']);
+            Route::put('/profile', [UpdateProfileController::class, 'update']);
+            Route::get('/profile', [UpdateProfileController::class, 'show']);
         });
     }
 );

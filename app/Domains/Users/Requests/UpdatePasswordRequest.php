@@ -18,4 +18,12 @@ class UpdatePasswordRequest extends FormRequest
             'password' => 'required|string|min:8|confirmed',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'password' => 'password',
+            'passwordConfirmation' => 'password_confirmation',
+        ];
+    }
 }
