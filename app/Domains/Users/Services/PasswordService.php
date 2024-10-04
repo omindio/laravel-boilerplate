@@ -7,7 +7,7 @@ use App\Domains\Users\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Domains\Users\Repositories\UserRepositoryInterface;
 
-class UpdatePasswordService
+class PasswordService
 {
     protected $userRepository;
 

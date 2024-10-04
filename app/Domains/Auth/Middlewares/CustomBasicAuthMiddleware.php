@@ -8,11 +8,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CustomBasicAuthMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
     public function handle(Request $request, Closure $next): Response
     {
         $username = env('BASIC_AUTH_USERNAME', 'admin');

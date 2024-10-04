@@ -9,4 +9,5 @@ interface UserRepositoryInterface
     public function findByEmail(string $email): ?User;
     public function createPasswordResetToken(User $user): string;
     public function updatePassword(User $user, string $hashedPassword): bool;
+    public function updateProfile(User $user, array $data);
 }

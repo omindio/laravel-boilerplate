@@ -3,27 +3,27 @@
 namespace App\Domains\Users\Controllers;
 
 use App\Domains\Users\Requests\UpdateProfileRequest;
-use App\Domains\Users\Services\UpdateProfileService;
+use App\Domains\Users\Services\ProfileService;
 use App\Shared\Http\Controllers\Controller;
 use App\Shared\Http\Responses\ApiErrorResponse;
 use App\Shared\Http\Responses\ApiSuccessResponse;
 use App\Shared\Exceptions\BaseException;
 use Illuminate\Http\Request;
 
-class UpdateProfileController extends Controller
+class ProfileController extends Controller
 {
-    protected $updateProfileService;
+    protected $profileService;
 
-    public function __construct(UpdateProfileService $updateProfileService)
+    public function __construct(ProfileService $profileService)
     {
-        $this->updateProfileService = $updateProfileService;
+        $this->profileService = $profileService;
     }
 
     public function update(UpdateProfileRequest $request)
     {
         try {
-            $this->updateProfileService->update($request->user(), $request->validated());
-            return ApiSuccessResponse::send([], 'La contraseña se ha cambiado correctamente.');
+            $user = $this->profileService->update($request->user(), $request->validated());
+            return ApiSuccessResponse::send($user, 'El usuario se ha actualizado correctamente.');
         } catch (BaseException $e) {
             return ApiErrorResponse::send($e->getMessage(), [], $e->getStatusCode());
         }
@@ -32,8 +32,8 @@ class UpdateProfileController extends Controller
     public function show(Request $request)
     {
         try {
-            $user = $this->updateProfileService->show($request->user());
-            return ApiSuccessResponse::send([$user]);
+            $user = $this->profileService->showByRequest($request);
+            return ApiSuccessResponse::send($user);
         } catch (BaseException $e) {
             return ApiErrorResponse::send($e->getMessage(), [], $e->getStatusCode());
         }

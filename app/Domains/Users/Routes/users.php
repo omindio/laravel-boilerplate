@@ -1,16 +1,16 @@
 <?php
 
-use App\Domains\Users\Controllers\UpdatePasswordController;
-use App\Domains\Users\Controllers\UpdateProfileController;
+use App\Domains\Users\Controllers\PasswordController;
+use App\Domains\Users\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(
     ['prefix' => 'users'],
     function () {
         Route::middleware('auth:sanctum')->group(function () {
-            Route::put('/password', [UpdatePasswordController::class, 'update']);
-            Route::put('/profile', [UpdateProfileController::class, 'update']);
-            Route::get('/profile', [UpdateProfileController::class, 'show']);
+            Route::put('/password', [PasswordController::class, 'update']);
+            Route::put('/profile', [ProfileController::class, 'update']);
+            Route::get('/profile', [ProfileController::class, 'show']);
         });
     }
 );

@@ -24,4 +24,10 @@ class UserRepository implements UserRepositoryInterface
         ]);
         return $user->save();
     }
+
+    public function updateProfile(User $user, array $data)
+    {
+        $user->update($data);
+        return $user;
+    }
 }

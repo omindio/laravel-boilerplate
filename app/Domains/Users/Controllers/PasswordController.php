@@ -4,24 +4,24 @@ namespace App\Domains\Users\Controllers;
 
 use App\Shared\Http\Controllers\Controller;
 use App\Domains\Users\Requests\UpdatePasswordRequest;
-use App\Domains\Users\Services\UpdatePasswordService;
+use App\Domains\Users\Services\PasswordService;
 use App\Shared\Http\Responses\ApiErrorResponse;
 use App\Shared\Http\Responses\ApiSuccessResponse;
 use App\Shared\Exceptions\BaseException;
 
-class UpdatePasswordController extends Controller
+class PasswordController extends Controller
 {
-    protected $updatePasswordService;
+    protected $passwordService;
 
-    public function __construct(UpdatePasswordService $updatePasswordService)
+    public function __construct(PasswordService $passwordService)
     {
-        $this->updatePasswordService = $updatePasswordService;
+        $this->passwordService = $passwordService;
     }
 
     public function update(UpdatePasswordRequest $request)
     {
         try {
-            $this->updatePasswordService->update($request->user(), $request->validated());
+            $this->passwordService->update($request->user(), $request->validated());
             return ApiSuccessResponse::send([], 'La contraseña se ha cambiado correctamente.');
         } catch (BaseException $e) {
             return ApiErrorResponse::send($e->getMessage(), [], $e->getStatusCode());
