@@ -96,9 +96,12 @@ php artisan route:cache
 php artisan view:clear
 php artisan view:cache
 
+composer dump-autoload
+
 php artisan route:list
 
 php artisan db:seed
 
 php artisan queue:work redis
+
 ```

@@ -63,7 +63,7 @@ return [
              * Middleware allows to prevent unexpected access to API documentation
              */
             'middleware' => [
-                'api' => [\App\Domains\Auth\Middlewares\CustomBasicAuthMiddleware::class],
+                'api' => [\App\Domains\Auth\Http\Middlewares\CustomBasicAuthMiddleware::class],
                 'asset' => [],
                 'docs' => [],
                 'oauth2_callback' => [],
