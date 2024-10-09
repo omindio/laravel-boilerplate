@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Domain\Users\Http\Controllers;
+namespace App\BoundedContext\Users\Http\Controllers;
 
-use App\Domain\Users\Http\Requests\UpdateProfileRequest;
-use App\Domain\Users\Services\ProfileService;
+use App\BoundedContext\Users\Http\Requests\UpdateProfileRequest;
+use App\BoundedContext\Users\Services\ProfileService;
 use App\Infrastructure\Http\Controllers\Controller;
 use App\Infrastructure\Http\Responses\ApiErrorResponse;
 use App\Infrastructure\Http\Responses\ApiSuccessResponse;

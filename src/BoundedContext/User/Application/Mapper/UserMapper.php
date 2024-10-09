@@ -2,11 +2,11 @@
 
 namespace App\Application\User\Mappers;
 
-use App\Domain\User\Application\DTOs\UserDTO;
-use App\Shared\Application\Mappers\MapperInterface;
-use App\Domain\User\Domain\Entities\UserEntity;
-use App\Domain\User\Domain\ValueObjects\ProfileValueObject;
-use App\Domain\User\Domain\ValueObjects\EmailValueObject;
+use App\BoundedContext\User\Application\DTOs\UserDTO;
+use App\Shared\Application\Mapper\MapperInterface;
+use App\BoundedContext\User\Domain\Entity\UserEntity;
+use App\BoundedContext\User\Domain\ValueObject\ProfileValueObject;
+use App\BoundedContext\User\Domain\ValueObject\EmailValueObject;
 
 class UserMapper implements MapperInterface
 {
@@ -38,7 +38,7 @@ class UserMapper implements MapperInterface
         );
     }
 
-    public static function fromDTOToEntity(UserDTO $userDTO): UserEntity
+    public static function fromCommandToEntity($userDTO): UserDTO
     {
         return new UserEntity(
             $userDTO->getId(),

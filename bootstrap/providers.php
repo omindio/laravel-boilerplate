@@ -1,7 +1,6 @@
 <?php
 
 return [
-    App\Application\Providers\ApplicationServiceProvider::class,
-    App\Application\Infrastructure\Providers\InfrastructureServiceProvider::class,
-    App\Presentation\Providers\PresentationServiceProvider::class,
+    App\Shared\Provider\SharedServiceProvider::class,
+    App\Shared\Provider\BoundedContextServiceProvider::class,
 ];

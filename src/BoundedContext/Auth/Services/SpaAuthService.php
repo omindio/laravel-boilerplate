@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Domain\Auth\Services;
+namespace App\BoundedContext\Auth\Services;
 
-use App\Domain\Auth\Exceptions\InvalidCredentialsException;
-use App\Domain\Users\Http\Resources\UserResource;
+use App\BoundedContext\Auth\Exceptions\InvalidCredentialsException;
+use App\BoundedContext\Users\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Auth\Notifications;
+namespace App\BoundedContext\Auth\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Domain\Auth\Http\Controllers;
+namespace App\BoundedContext\Auth\Http\Controllers;
 
-use App\Domain\Auth\Http\Requests\ForgotPasswordRequest;
-use App\Domain\Auth\Http\Requests\ResetPasswordRequest;
-use App\Domain\Auth\Services\ForgotPasswordService;
+use App\BoundedContext\Auth\Http\Requests\ForgotPasswordRequest;
+use App\BoundedContext\Auth\Http\Requests\ResetPasswordRequest;
+use App\BoundedContext\Auth\Services\ForgotPasswordService;
 use App\Infrastructure\Http\Controllers\Controller;
 use App\Infrastructure\Http\Responses\ApiErrorResponse;
 use App\Infrastructure\Http\Responses\ApiSuccessResponse;

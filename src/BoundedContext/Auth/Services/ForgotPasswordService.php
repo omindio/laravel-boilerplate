@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Domain\Auth\Services;
+namespace App\BoundedContext\Auth\Services;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
-use App\Domain\Auth\Notifications\ResetPasswordNotification;
-use App\Domain\Auth\Exceptions\InvalidCaptchaException;
-use App\Domain\Users\Exceptions\UserNotFoundException;
-use App\Domain\Users\Repositories\UserRepositoryInterface;
+use App\BoundedContext\Auth\Notifications\ResetPasswordNotification;
+use App\BoundedContext\Auth\Exceptions\InvalidCaptchaException;
+use App\BoundedContext\Users\Exceptions\UserNotFoundException;
+use App\BoundedContext\Users\Repository\UserRepositoryInterface;
 use App\Shared\Services\CaptchaService;
 use Illuminate\Support\Facades\Hash;
-use App\Domain\Auth\Exceptions\InvalidTokenException;
+use App\BoundedContext\Auth\Exceptions\InvalidTokenException;
 use App\Shared\Exceptions\BaseException;
 use App\Shared\Traits\MapsPasswordConfirmation;
 

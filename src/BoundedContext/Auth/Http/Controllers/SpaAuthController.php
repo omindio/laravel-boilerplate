@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Domain\Auth\Http\Controllers;
+namespace App\BoundedContext\Auth\Http\Controllers;
 
-use App\Domain\Auth\Http\Requests\LoginRequest;
-use App\Domain\Auth\Services\SpaAuthService;
+use App\BoundedContext\Auth\Http\Requests\LoginRequest;
+use App\BoundedContext\Auth\Services\SpaAuthService;
 use Illuminate\Http\Request;
 use App\Infrastructure\Http\Controllers\Controller;
 use App\Infrastructure\Http\Responses\ApiSuccessResponse;

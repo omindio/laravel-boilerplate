@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Domain\Users\Http\Requests;
+namespace App\BoundedContext\User\Presentation\Request;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Shared\Presentation\Request;
 
-class UpdatePasswordRequest extends FormRequest
+class UpdatePasswordRequest extends Request
 {
     public function authorize()
     {

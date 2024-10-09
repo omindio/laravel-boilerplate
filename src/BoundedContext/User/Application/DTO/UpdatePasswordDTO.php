@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\User\Application\DTOs;
+namespace App\BoundedContext\User\Application\DTOs;
 
 class UpdatePasswordDTO
 {

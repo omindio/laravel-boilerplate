@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Auth\Services;
+namespace App\BoundedContext\Auth\Services;
 
-use App\Domain\Users\Http\Resources\UserResource;
+use App\BoundedContext\Users\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 
 class AuthService

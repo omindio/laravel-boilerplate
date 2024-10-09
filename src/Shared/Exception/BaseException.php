@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Shared\Exception;
+
+use Exception;
+
+class BaseException extends Exception
+{
+    protected $statusCode;
+
+    const HTTP_OK = 200;
+    const HTTP_CREATED = 201;
+    const HTTP_NO_CONTENT = 204;
+    const HTTP_BAD_REQUEST = 400;
+    const HTTP_UNAUTHORIZED = 401;
+    const HTTP_FORBIDDEN = 403;
+    const HTTP_NOT_FOUND = 404;
+    const HTTP_UNPROCESSABLE_ENTITY = 422;
+    const HTTP_INTERNAL_SERVER_ERROR = 500;
+
+    public function __construct($message = "", $statusCode = self::HTTP_INTERNAL_SERVER_ERROR)
+    {
+        parent::__construct($message);
+        $this->statusCode = $statusCode;
+    }
+
+    public function getStatusCode()
+    {
+        return $this->statusCode;
+    }
+}

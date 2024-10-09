@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Domain\Auth\Http\Controllers\AuthController;
-use App\Domain\Auth\Http\Controllers\ForgotPasswordController;
-use App\Domain\Auth\Http\Controllers\SpaAuthController;
+use App\BoundedContext\Auth\Http\Controllers\AuthController;
+use App\BoundedContext\Auth\Http\Controllers\ForgotPasswordController;
+use App\BoundedContext\Auth\Http\Controllers\SpaAuthController;
 
 Route::group(
     ['prefix' => 'auth'],

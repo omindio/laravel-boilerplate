@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Domain\Users\Http\Requests;
+namespace App\BoundedContext\User\Presentation\Request;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Shared\Presentation\Request;
 
-class UpdateProfileRequest extends FormRequest
+class UpdateProfileRequest extends Request
 {
     public function authorize()
     {

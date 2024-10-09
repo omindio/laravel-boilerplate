@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Domain\User\Domain\Exceptions;
+namespace App\BoundedContext\User\Domain\Exception;
 
-use App\Shared\Domain\Exceptions\BaseException;
-use App\Shared\Domain\Exceptions\HttpStatusCodes;
+use App\Shared\Exception\BaseException;
 
 class UserNotFoundException extends BaseException
 {
     public function __construct($message = "Usuario no encontrado.")
     {
-        parent::__construct($message, HttpStatusCodes::HTTP_NOT_FOUND);
+        parent::__construct($message, self::HTTP_NOT_FOUND);
     }
 }

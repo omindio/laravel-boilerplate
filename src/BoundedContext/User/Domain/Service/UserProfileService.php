@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\User\Domain\Services;
+namespace App\BoundedContext\User\Domain\Service;
 
-use App\Domain\Users\Repositories\UserRepositoryInterface;
+use App\BoundedContext\Users\Repository\UserRepositoryInterface;
 
 class UserProfileService
 {
@@ -13,7 +13,8 @@ class UserProfileService
         $this->userRepository = $userRepository;
     }
 
-    public function update(int $userId, UpdateProfileValueObject $updateProfileValueObject) {
+    public function update(int $userId, UpdateProfileValueObject $updateProfileValueObject)
+    {
         $userEntity = $this->userRepository->findById($userId);
 
         if (!$userEntity) {

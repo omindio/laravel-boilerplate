@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Domain\User\Domain\Exceptions;
+namespace App\BoundedContext\User\Domain\Exception;
 
-use App\Shared\Domain\Exceptions\BaseException;
-use App\Shared\Domain\Exceptions\HttpStatusCodes;
+use App\Shared\Exception\BaseException;
 
 class SamePasswordException extends BaseException
 {
     public function __construct($message = "La nueva contraseña no puede ser igual a la actual.")
     {
-        parent::__construct($message, HttpStatusCodes::HTTP_UNPROCESSABLE_ENTITY);
+        parent::__construct($message, self::HTTP_UNPROCESSABLE_ENTITY);
     }
 }

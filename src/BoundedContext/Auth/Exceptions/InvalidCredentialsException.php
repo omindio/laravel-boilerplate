@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Auth\Exceptions;
+namespace App\BoundedContext\Auth\Exceptions;
 
 use App\Shared\Exceptions\BaseException;
 use Symfony\Component\HttpFoundation\Response;

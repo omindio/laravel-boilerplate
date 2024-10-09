@@ -1,33 +1,46 @@
 <?php
 
-namespace App\Domain\User\Domain\Services;
+namespace App\BoundedContext\User\Domain\Service;
 
-use App\Domain\User\Domain\Entities\UserEntity;
-use App\Domain\User\Domain\Exceptions\IncorrectPasswordException;
-use App\Domain\User\Domain\Interfaces\PasswordServiceInterface;
-use App\Domain\User\Domain\Repositories\UserRepositoryInterface;
-use App\Domain\User\Domain\ValueObjects\UpdatePasswordValueObject;
+use App\BoundedContext\User\Domain\Contract\UserCommandRepositoryInterface;
+use App\BoundedContext\User\Domain\Entity\User;
+use App\BoundedContext\User\Domain\Exception\IncorrectPasswordException;
+use App\BoundedContext\User\Domain\Contract\UserPasswordServiceInterface;
+use App\BoundedContext\User\Domain\Contract\UserQueryRepositoryInterface;
+use App\BoundedContext\User\Domain\ValueObject\UpdatePassword;
+use App\BoundedContext\User\Domain\Exception\UserNotFoundException;
+use App\BoundedContext\User\Domain\ValueObject\Id;
 
 class UserPasswordService
 {
-    private $userRepository;
     private $passwordService;
+    private $userQueryRepository;
+    private $userCommandRepository;
 
-    public function __construct(UserRepositoryInterface $userRepository, PasswordServiceInterface $passwordService)
+    public function __construct(UserPasswordServiceInterface $passwordService, UserQueryRepositoryInterface $userQueryRepository, UserCommandRepositoryInterface $userCommandRepository)
     {
-        $this->userRepository = $userRepository;
+        $this->passwordService = $passwordService;
+        $this->userQueryRepository = $userQueryRepository;
+        $this->userCommandRepository = $userCommandRepository;
         $this->passwordService = $passwordService;
     }
 
-    public function update(UserEntity $user, UpdatePasswordValueObject $passwordValueObject)
+    public function update(Id $userId, UpdatePassword $passwordValueObject): void
     {
-        if (!$this->passwordService->verify($passwordValueObject->getCurrentPassword(), $user->getPasswordValue())) {
+        $user = $this->userQueryRepository->findById($userId);
+
+        if (!$user) {
+            throw new UserNotFoundException();
+        }
+
+        if (!$this->passwordService->verify($passwordValueObject->getCurrentPassword(), $user->getPassword()->value())) {
             throw new IncorrectPasswordException();
         }
 
-        $hashedPasswordValueObject = $this->passwordService->hash($passwordValueObject->getNewPassword()->getPassword());
+        $hashedPasswordValueObject = $this->passwordService->hash($passwordValueObject->getNewPassword()->value());
 
         $user->setPassword($hashedPasswordValueObject);
-        $this->userRepository->updatePassword($user);
+
+        $this->userCommandRepository->updatePassword($user);
     }
 }
