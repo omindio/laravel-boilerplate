@@ -8,4 +8,5 @@ interface UserCommandRepositoryInterface
 {
     public function updatePassword(User $user): bool;
     public function updateProfile(User $user): bool;
+    public function create(User $user): User;
 }

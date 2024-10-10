@@ -2,11 +2,12 @@
 
 namespace App\BoundedContext\User\Application\Command;
 
+use App\BoundedContext\User\Application\Command\UpdateUserPassword;
 use App\BoundedContext\User\Domain\Service\UserPasswordService;
 use App\BoundedContext\User\Domain\ValueObject\UpdatePassword;
 use App\BoundedContext\User\Domain\ValueObject\Id;
 
-class UpdateUserPasswordCommandHandler
+class UpdateUserPasswordHandler
 {
     private $userPasswordService;
 
@@ -15,7 +16,7 @@ class UpdateUserPasswordCommandHandler
         $this->userPasswordService = $userPasswordService;
     }
 
-    public function handle(UpdateUserPasswordCommand $command): void
+    public function handle(UpdateUserPassword $command): void
     {
         $updatePasswordValueObject = new UpdatePassword(
             $command->getCurrentPassword(),

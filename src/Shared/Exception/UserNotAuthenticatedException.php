@@ -11,7 +11,3 @@ class UserNotAuthenticatedException extends BaseException
         parent::__construct($message, self::HTTP_UNAUTHORIZED);
     }
 }
-
-
-
-class UserNotFoundException extends BaseException {}

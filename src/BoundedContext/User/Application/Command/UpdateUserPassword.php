@@ -2,7 +2,7 @@
 
 namespace App\BoundedContext\User\Application\Command;
 
-class UpdateUserPasswordCommand
+class UpdateUserPassword
 {
     private int $userId;
     private string $currentPassword;

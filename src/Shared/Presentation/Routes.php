@@ -8,7 +8,7 @@ Route::middleware(['throttle:api'])->group(function () {
         return response()->json(['status' => 'ok']);
     });
 
-    $domainDirectories = glob(base_path('app/Domains/*/Http/Routes/*.php'));
+    $domainDirectories = glob(base_path('app/BoundedContext/*/Presentation/routes.php'));
 
     foreach ($domainDirectories as $routeFile) {
         require $routeFile;

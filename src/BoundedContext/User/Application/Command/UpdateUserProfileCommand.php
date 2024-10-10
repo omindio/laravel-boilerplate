@@ -1,3 +1,0 @@
-<?php
-
-//extends  UserHandler

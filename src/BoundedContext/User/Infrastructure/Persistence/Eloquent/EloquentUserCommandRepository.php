@@ -11,14 +11,19 @@ class EloquentUserCommandRepository implements UserCommandRepositoryInterface
 
     public function updatePassword(User $user): bool
     {
-        return UserModel::where('id', $user->getId())->update(['password' => $user->getPasswordValue()]);
+        return UserModel::where('id', $user->getId())->update(['password' => $user->getPassword()->value()]);
     }
 
     public function updateProfile(User $user): bool
     {
         return UserModel::where('id', $user->getId())->update([
-            'name' => $user->getProfileName(),
-            'surname' => $user->getProfileSurname(),
+            'name' => $user->getProfile()->getName(),
+            'surname' => $user->getProfile()->getSurname(),
         ]);
+    }
+
+    public function create(User $user): User
+    {
+        return $user;
     }
 }

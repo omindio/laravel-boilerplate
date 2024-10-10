@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Application\User\DTO;
+namespace App\Application\User\Response;
 
-class UserProfileDTO
+class UserProfileResponse
 {
     protected $name;
     protected $surname;

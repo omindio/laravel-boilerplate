@@ -1,8 +1,8 @@
 <?php
 
-namespace App\BoundedContext\Users\Http\Controllers;
+namespace App\BoundedContext\User\Presentation\Controller;
 
-use App\Infrastructure\Http\Controllers\Controller;
+use App\Shared\Presentation\Controller;
 
 class UserController extends Controller
 {

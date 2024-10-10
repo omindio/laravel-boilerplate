@@ -1,14 +1,21 @@
 <?php
 
-namespace App\BoundedContext\Users\Http\Controllers;
+namespace App\BoundedContext\User\Presentation\Controller;
 
 use App\BoundedContext\User\Presentation\Request\UpdatePasswordRequest;
-use App\BoundedContext\User\Application\Command\UpdateUserPasswordCommand;
+use App\BoundedContext\User\Application\Command\UpdateUserPassword;
+use App\Shared\Application\Bus\CommandBusInterface;
 use App\Shared\Exception\BaseException;
 use App\Shared\Presentation\Controller;
 
-class PasswordController extends Controller
+class UserPasswordController extends Controller
 {
+    private CommandBusInterface $commandBus;
+
+    public function __construct(CommandBusInterface $commandBus)
+    {
+        $this->commandBus = $commandBus;
+    }
 
     public function update(UpdatePasswordRequest $request)
     {
@@ -17,13 +24,13 @@ class PasswordController extends Controller
 
             $userId = $request->user()->id;
 
-            $updatePasswordCommand = new UpdateUserPasswordCommand(
+            $updatePasswordCommand = new UpdateUserPassword(
                 $userId,
                 $data['currentPassword'],
                 $data['newPassword'],
             );
 
-            //handle command from bus
+            $this->commandBus->execute($updatePasswordCommand);
 
             return $this->successResponse('La contraseña se ha cambiado correctamente.');
         } catch (BaseException $e) {

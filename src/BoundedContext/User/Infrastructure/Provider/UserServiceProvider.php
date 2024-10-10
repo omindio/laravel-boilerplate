@@ -17,10 +17,10 @@ class UserServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind(EloquentUserCommandRepository::class, UserCommandRepositoryInterface::class);
-        $this->app->bind(EloquentUserQueryRepository::class, UserQueryRepositoryInterface::class);
+        $this->app->bind(UserCommandRepositoryInterface::class, EloquentUserCommandRepository::class);
+        $this->app->bind(UserQueryRepositoryInterface::class, EloquentUserQueryRepository::class);
 
-        $this->app->bind(UserPasswordServiceInterface::class, LaravelHashPasswordService::class);
+        $this->app->singleton(UserPasswordServiceInterface::class, LaravelHashPasswordService::class);
     }
 
     public function boot(): void

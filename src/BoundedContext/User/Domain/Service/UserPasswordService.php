@@ -22,7 +22,6 @@ class UserPasswordService
         $this->passwordService = $passwordService;
         $this->userQueryRepository = $userQueryRepository;
         $this->userCommandRepository = $userCommandRepository;
-        $this->passwordService = $passwordService;
     }
 
     public function update(Id $userId, UpdatePassword $passwordValueObject): void
