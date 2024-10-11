@@ -17,4 +17,4 @@ return Application::configure(basePath: dirname(__DIR__))
         //$middleware->alias(['custom.auth.basic' => CustomBasicAuthMiddleware::class]);
         //$middleware->alias(['throttle.forgot.password' => ThrottleForgotPasswordRequests::class]);
     })
-    ->withExceptions([App\Shared\Exception\GlobalExceptionHandler::class, 'handle'])->create();
+    ->withExceptions()->create();

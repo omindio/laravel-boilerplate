@@ -9,14 +9,21 @@ use App\BoundedContext\User\Domain\Entity\User;
 class EloquentUserCommandRepository implements UserCommandRepositoryInterface
 {
 
+    private UserModel $model;
+
+    public function __construct(UserModel $userModel)
+    {
+        $this->model = $userModel;
+    }
+
     public function updatePassword(User $user): bool
     {
-        return UserModel::where('id', $user->getId())->update(['password' => $user->getPassword()->value()]);
+        return $this->model::where('id', $user->getId())->update(['password' => $user->getPassword()->value()]);
     }
 
     public function updateProfile(User $user): bool
     {
-        return UserModel::where('id', $user->getId())->update([
+        return $this->model::where('id', $user->getId())->update([
             'name' => $user->getProfile()->getName(),
             'surname' => $user->getProfile()->getSurname(),
         ]);
