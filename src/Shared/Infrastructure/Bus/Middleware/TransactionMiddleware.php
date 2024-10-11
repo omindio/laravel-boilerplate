@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Shared\Application\Bus\Middleware;
+namespace App\Shared\Infrastructure\Bus\Middleware;
 
 use App\Shared\Application\Contract\TransactionManagerInterface;
 use App\Shared\Application\Contract\BusMiddlewareInterface;

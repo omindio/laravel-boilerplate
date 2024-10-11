@@ -2,14 +2,14 @@
 
 namespace App\BoundedContext\User\Domain\Service;
 
-use App\BoundedContext\User\Domain\Contract\UserCommandRepositoryInterface;
-use App\BoundedContext\User\Domain\Exception\IncorrectPasswordException;
 use App\Shared\Domain\Contract\PasswordServiceInterface;
+use App\BoundedContext\User\Domain\Contract\UserCommandRepositoryInterface;
 use App\BoundedContext\User\Domain\Contract\UserQueryRepositoryInterface;
 use App\BoundedContext\User\Domain\ValueObject\UpdatePassword;
-use App\BoundedContext\User\Domain\Exception\UserNotFoundException;
 use App\BoundedContext\User\Domain\ValueObject\Id;
-use App\BoundedContext\User\Domain\ValueObject\Password;
+use App\Shared\Domain\ValueObject\Password;
+use App\BoundedContext\User\Domain\Exception\UserNotFoundException;
+use App\BoundedContext\User\Domain\Exception\IncorrectPasswordException;
 
 class UserPasswordService
 {

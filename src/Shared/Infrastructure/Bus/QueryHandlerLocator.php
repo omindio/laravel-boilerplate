@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Shared\Application\Bus;
+namespace App\Shared\Infrastructure\Bus;
 
-use App\Shared\Application\Bus\Exception\HandlerNotFoundException;
+use App\Shared\Infrastructure\Bus\Exception\HandlerNotFoundException;
 
 class QueryHandlerLocator
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\BoundedContext\User\Domain\Exception;
+namespace App\Shared\Domain\Exception;
 
-use App\Shared\Exception\BaseException;
+use App\Shared\Domain\Exception\BaseException;
 
 class InvalidPasswordException extends BaseException
 {

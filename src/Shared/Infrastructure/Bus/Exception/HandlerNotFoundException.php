@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Shared\Application\Bus\Exception;
+namespace App\Shared\Infrastructure\Bus\Exception;
 
-use App\Shared\Exception\BaseException;
+use App\Shared\Domain\Exception\BaseException;
 
 class HandlerNotFoundException extends BaseException
 {

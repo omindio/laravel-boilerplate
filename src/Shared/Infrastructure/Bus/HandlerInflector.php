@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Shared\Application\Bus;
+namespace App\Shared\Infrastructure\Bus;
 
 class HandlerInflector
 {

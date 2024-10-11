@@ -23,9 +23,9 @@ class EloquentUserCommandRepository implements UserCommandRepositoryInterface
 
     public function updateProfile(User $user): bool
     {
-        return $this->model::where('id', $user->getId())->update([
-            'name' => $user->getProfile()->getName(),
-            'surname' => $user->getProfile()->getSurname(),
+        return $this->model::where('id', $user->getId()->value())->update([
+            'name' => $user->getProfile()->getName()->value(),
+            'surname' => $user->getProfile()->getSurname()->value(),
         ]);
     }
 

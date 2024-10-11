@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\User\Response;
+namespace App\BoundedContext\User\Application\Response;
 
 class UserProfileResponse
 {
@@ -21,5 +21,13 @@ class UserProfileResponse
     public function getSurname(): string
     {
         return $this->surname;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'name' => $this->name,
+            'surname' => $this->surname,
+        ];
     }
 }

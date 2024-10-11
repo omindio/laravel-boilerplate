@@ -2,43 +2,27 @@
 
 namespace App\BoundedContext\User\Domain\ValueObject;
 
-use App\BoundedContext\User\Domain\Exception\EmptyNameException;
-use App\BoundedContext\User\Domain\Exception\EmptySurnameException;
+use App\Domain\ValueObject\Name;
+use App\Domain\ValueObject\Surname;
 
 class Profile
 {
-    private $name;
-    private $surname;
+    private Name $name;
+    private Surname $surname;
 
-    public function __construct(string $name, string $surname)
+    public function __construct(Name $name, Surname $surname)
     {
-        $this->setName($name);
-        $this->setSurname($surname);
+        $this->name = $name;
+        $this->surname = $surname;
     }
 
-    public function getName(): string
+    public function getName(): Name
     {
         return $this->name;
     }
 
-    public function getSurname(): string
+    public function getSurname(): Surname
     {
         return $this->surname;
-    }
-
-    private function setName(string $name)
-    {
-        if (empty($name)) {
-            throw new EmptyNameException();
-        }
-        $this->name = $name;
-    }
-
-    private function setSurname(string $surname)
-    {
-        if (empty($surname)) {
-            throw new EmptySurnameException();
-        }
-        $this->surname = $surname;
     }
 }

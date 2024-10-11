@@ -2,16 +2,16 @@
 
 namespace App\Shared\Infrastructure\Provider;
 
+use App\BoundedContext\User\Infrastructure\Provider\UserCommandQueryServiceProvider;
 use Illuminate\Support\ServiceProvider;
-use App\BoundedContext\User\Application\Command\UpdateUserPasswordHandler;
-use App\BoundedContext\User\Application\Command\UpdateUserPassword;
-use App\Shared\Application\Bus\CommandBus;
+
+use App\Shared\Infrastructure\Bus\CommandBus;
 use App\Shared\Application\Contract\CommandBusInterface;
-use App\Shared\Application\Bus\QueryBus;
-use App\Shared\Application\Bus\CommandHandlerLocator;
-use App\Shared\Application\Bus\QueryHandlerLocator;
-use App\Shared\Application\Bus\HandlerInflector;
-use App\Shared\Application\Bus\Middleware\TransactionMiddleware;
+use App\Shared\Infrastructure\Bus\QueryBus;
+use App\Shared\Infrastructure\Bus\CommandHandlerLocator;
+use App\Shared\Infrastructure\Bus\QueryHandlerLocator;
+use App\Shared\Infrastructure\Bus\HandlerInflector;
+use App\Shared\Infrastructure\Bus\Middleware\TransactionMiddleware;
 use App\Shared\Application\Contract\QueryBusInterface;
 use App\Shared\Application\Contract\TransactionManagerInterface;
 
@@ -19,10 +19,7 @@ class CommandQueryServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(CommandBusInterface::class, CommandBus::class);
-        $this->app->singleton(QueryBusInterface::class, QueryBus::class);
-
-        $this->app->singleton(CommandBus::class, function ($app) {
+        $this->app->singleton(CommandBusInterface::class, function ($app) {
             $handlerLocator = new CommandHandlerLocator();
             $handlerInflector = new HandlerInflector();
 
@@ -34,29 +31,25 @@ class CommandQueryServiceProvider extends ServiceProvider
 
             $commandBus->addMiddleware($transactionMiddleware);
 
-            $this->registerCommands($commandBus);
-
             return $commandBus;
         });
 
-        $this->app->singleton(QueryBus::class, function ($app) {
+        $this->app->singleton(QueryBusInterface::class, function ($app) {
             $handlerLocator = new QueryHandlerLocator();
             $handlerInflector = new HandlerInflector();
 
             $queryBus = new QueryBus($handlerLocator, $handlerInflector);
 
-            $this->registerQueries($queryBus);
-
             return $queryBus;
         });
+
+        $this->registerContexts();
     }
 
-    private function registerCommands(CommandBus $commandBus): void
+    private function registerContexts(): void
     {
-        $commandBus->register(UpdateUserPassword::class, UpdateUserPasswordHandler::class);
+        $this->app->register(UserCommandQueryServiceProvider::class);
     }
-
-    private function registerQueries(QueryBus $queryBus): void {}
 
     public function boot(): void {}
 }

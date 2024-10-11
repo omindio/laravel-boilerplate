@@ -1,0 +1,41 @@
+<?php
+
+namespace App\BoundedContext\User\Application\Command;
+
+use App\BoundedContext\User\Application\Command\UpdateUserProfile;
+use App\BoundedContext\User\Application\Response\UserProfileResponse;
+use App\BoundedContext\User\Domain\Service\UserProfileService;
+use App\BoundedContext\User\Domain\ValueObject\Profile;
+use App\Domain\ValueObject\Name;
+use App\Domain\ValueObject\Surname;
+use App\BoundedContext\User\Domain\ValueObject\Id;
+
+class UpdateUserProfileHandler
+{
+    private $userProfileService;
+
+    public function __construct(UserProfileService $userProfileService)
+    {
+        $this->userProfileService = $userProfileService;
+    }
+
+    public function handle(UpdateUserProfile $command): UserProfileResponse
+    {
+        $profileValueObject = new Profile(
+            new Name($command->getName()),
+            new Surname($command->getSurname()),
+        );
+
+        $userId = new Id($command->getUserId());
+
+        $profile = $this->userProfileService->update(
+            $userId,
+            $profileValueObject
+        );
+
+        return new UserProfileResponse(
+            $profile->getName()->value(),
+            $profile->getSurname()->value()
+        );
+    }
+}

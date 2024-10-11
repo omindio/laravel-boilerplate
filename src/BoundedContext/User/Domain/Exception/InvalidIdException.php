@@ -2,7 +2,7 @@
 
 namespace App\BoundedContext\User\Domain\Exception;
 
-use App\Shared\Exception\BaseException;
+use App\Shared\Domain\Exception\BaseException;
 
 class InvalidIdException extends BaseException
 {

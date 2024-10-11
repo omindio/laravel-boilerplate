@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Shared\Exception;
+namespace App\Shared\Infrastructure\Exception;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Auth\AuthenticationException;

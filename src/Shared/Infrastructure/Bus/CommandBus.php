@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Shared\Application\Bus;
+namespace App\Shared\Infrastructure\Bus;
 
-use App\Shared\Application\Bus\CommandHandlerLocator;
+use App\Shared\Infrastructure\Bus\CommandHandlerLocator;
 use App\Shared\Application\Contract\CommandBusInterface;
-use App\Shared\Application\Bus\HandlerInflector;
+use App\Shared\Infrastructure\Bus\HandlerInflector;
 use App\Shared\Application\Contract\BusMiddlewareInterface;
 
 class CommandBus implements CommandBusInterface

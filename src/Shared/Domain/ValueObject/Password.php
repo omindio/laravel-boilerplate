@@ -1,9 +1,9 @@
 <?php
 
-namespace App\BoundedContext\User\Domain\ValueObject;
+namespace App\Shared\Domain\ValueObject;
 
-use App\BoundedContext\User\Domain\Exception\EmptyPasswordException;
-use App\BoundedContext\User\Domain\Exception\InvalidPasswordException;
+use App\Shared\Domain\Exception\EmptyPasswordException;
+use App\Shared\Domain\Exception\InvalidPasswordException;
 
 class Password
 {

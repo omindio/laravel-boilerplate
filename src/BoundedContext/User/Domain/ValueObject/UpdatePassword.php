@@ -2,7 +2,7 @@
 
 namespace App\BoundedContext\User\Domain\ValueObject;
 
-use App\BoundedContext\User\Domain\ValueObject\Password;
+use App\Shared\Domain\ValueObject\Password;
 use App\BoundedContext\User\Domain\Exception\SamePasswordException;
 
 class UpdatePassword

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Shared\Provider;
+namespace App\Shared\Infrastructure\Provider;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 
-class SharedServiceProvider extends ServiceProvider
+class RateLimiterServiceProvider extends ServiceProvider
 {
     public function register(): void {}
 

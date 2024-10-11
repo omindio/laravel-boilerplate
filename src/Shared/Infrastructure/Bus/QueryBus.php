@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Shared\Application\Bus;
+namespace App\Shared\Infrastructure\Bus;
 
-use App\Shared\Application\Bus\QueryHandlerLocator;
-use App\Shared\Application\Bus\HandlerInflector;
+use App\Shared\Infrastructure\Bus\QueryHandlerLocator;
+use App\Shared\Infrastructure\Bus\HandlerInflector;
 use App\Shared\Application\Contract\QueryBusInterface;
 use App\Shared\Application\Contract\BusMiddlewareInterface;
 

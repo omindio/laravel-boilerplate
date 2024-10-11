@@ -3,7 +3,7 @@
 namespace App\BoundedContext\User\Domain\Entity;
 
 use App\BoundedContext\User\Domain\ValueObject\Email;
-use App\BoundedContext\User\Domain\ValueObject\Password;
+use App\Shared\Domain\ValueObject\Password;
 use App\BoundedContext\User\Domain\ValueObject\Profile;
 use App\BoundedContext\User\Domain\ValueObject\Id;
 
@@ -12,12 +12,12 @@ class User
     private Id $id;
     private Profile $profile;
     private Email $email;
-    private ?Password $password;
+    private Password $password;
     private string $createdAt;
     private array $roles;
     private array $permissions;
 
-    public function __construct(Id $id, Profile $profile, Email $email, ?Password $password, string $createdAt, array $roles, array $permissions)
+    public function __construct(Id $id, Profile $profile, Email $email, Password $password, string $createdAt, array $roles, array $permissions)
     {
         $this->id = $id;
         $this->profile = $profile;

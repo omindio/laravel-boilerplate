@@ -2,32 +2,46 @@
 
 namespace App\BoundedContext\User\Domain\Service;
 
-use App\BoundedContext\Users\Repository\UserRepositoryInterface;
+use App\BoundedContext\User\Domain\Contract\UserCommandRepositoryInterface;
+use App\BoundedContext\User\Domain\Contract\UserQueryRepositoryInterface;
+use App\BoundedContext\User\Domain\ValueObject\Id;
+use App\BoundedContext\User\Domain\ValueObject\Profile;
+use App\BoundedContext\User\Domain\Exception\UserNotFoundException;
 
 class UserProfileService
 {
-    private $userRepository;
+    private $userQueryRepository;
+    private $userCommandRepository;
 
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(UserQueryRepositoryInterface $userQueryRepository, UserCommandRepositoryInterface $userCommandRepository)
     {
-        $this->userRepository = $userRepository;
+        $this->userQueryRepository = $userQueryRepository;
+        $this->userCommandRepository = $userCommandRepository;
     }
 
-    public function update(int $userId, UpdateProfileValueObject $updateProfileValueObject)
+    public function update(Id $userId, Profile $profileValueObject): Profile
     {
-        $userEntity = $this->userRepository->findById($userId);
+        $user = $this->userQueryRepository->findById($userId);
 
-        if (!$userEntity) {
+        if (!$user) {
             throw new UserNotFoundException();
         }
 
-        $userEntity->setProfile($updateProfileValueObject);
+        $user->setProfile($profileValueObject);
 
-        $this->userRepository->update($userEntity);
+        $this->userCommandRepository->updateProfile($user);
+
+        return $user->getProfile();
     }
 
-    public function show()
+    public function getProfile(Id $userId): Profile
     {
-        //return new ProfileResource($request->user());
+        $user = $this->userQueryRepository->findById($userId);
+
+        if (!$user) {
+            throw new UserNotFoundException();
+        }
+
+        return $user->getProfile();
     }
 }
