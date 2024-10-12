@@ -17,8 +17,5 @@ class UserServiceProvider extends ServiceProvider
         $this->app->bind(UserQueryRepositoryInterface::class, EloquentUserQueryRepository::class);
     }
 
-    public function boot(): void
-    {
-        $this->loadMigrationsFrom(__DIR__ . '/../../Infrastructure/Persistence/Eloquent/Migration');
-    }
+    public function boot(): void {}
 }

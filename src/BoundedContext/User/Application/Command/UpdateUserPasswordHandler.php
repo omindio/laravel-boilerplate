@@ -3,9 +3,9 @@
 namespace App\BoundedContext\User\Application\Command;
 
 use App\BoundedContext\User\Application\Command\UpdateUserPassword;
-use App\BoundedContext\User\Domain\Service\UserPasswordService;
+use App\BoundedContext\User\Application\Service\UserPasswordService;
 use App\BoundedContext\User\Domain\ValueObject\UpdatePassword;
-use App\BoundedContext\User\Domain\ValueObject\Id;
+use App\Shared\Domain\ValueObject\UserId;
 
 class UpdateUserPasswordHandler
 {
@@ -23,7 +23,7 @@ class UpdateUserPasswordHandler
             $command->getNewPassword(),
         );
 
-        $userId = new Id($command->getUserId());
+        $userId = new UserId($command->getUserId());
 
         $this->userPasswordService->update(
             $userId,

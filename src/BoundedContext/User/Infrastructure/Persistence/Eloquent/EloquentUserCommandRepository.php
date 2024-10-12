@@ -3,7 +3,7 @@
 namespace App\BoundedContext\User\Infrastructure\Persistence\Eloquent;
 
 use App\BoundedContext\User\Domain\Contract\UserCommandRepositoryInterface;
-use App\BoundedContext\User\Infrastructure\Model\UserModel;
+use App\Shared\Infrastructure\Persistence\Eloquent\Model\UserModel;
 use App\BoundedContext\User\Domain\Entity\User;
 
 class EloquentUserCommandRepository implements UserCommandRepositoryInterface

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\BoundedContext\User\Infrastructure\Persistence\Eloquent;
+namespace App\BoundedContext\Authentication\Infrastructure\Persistence\Eloquent;
 
-use App\BoundedContext\User\Domain\Contract\UserQueryRepositoryInterface;
+use App\BoundedContext\Authentication\Domain\Contract\UserQueryRepositoryInterface;
 use App\Shared\Infrastructure\Persistence\Eloquent\Model\UserModel;
-use App\BoundedContext\User\Domain\Entity\User;
+use App\BoundedContext\Authentication\Domain\Entity\User;
 use App\Shared\Domain\ValueObject\Email;
 use App\Shared\Domain\ValueObject\UserId;
-use App\BoundedContext\User\Infrastructure\Persistence\Eloquent\EloquentUserDatabaseMapper;
+use App\BoundedContext\Authentication\Infrastructure\Persistence\Eloquent\EloquentUserDatabaseMapper;
 
 class EloquentUserQueryRepository implements UserQueryRepositoryInterface
 {

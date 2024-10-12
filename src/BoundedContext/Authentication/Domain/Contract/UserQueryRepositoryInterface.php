@@ -1,8 +1,8 @@
 <?php
 
-namespace App\BoundedContext\User\Domain\Contract;
+namespace App\BoundedContext\Authentication\Domain\Contract;
 
-use App\BoundedContext\User\Domain\Entity\User;
+use App\BoundedContext\Authentication\Domain\Entity\User;
 use App\Shared\Domain\ValueObject\Email;
 use App\Shared\Domain\ValueObject\UserId;
 

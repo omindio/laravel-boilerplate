@@ -4,8 +4,8 @@ namespace App\BoundedContext\User\Application\Query;
 
 use App\BoundedContext\User\Application\Query\GetUserProfile;
 use App\BoundedContext\User\Application\Response\UserProfileResponse;
-use App\BoundedContext\User\Domain\Service\UserProfileService;
-use App\BoundedContext\User\Domain\ValueObject\Id;
+use App\BoundedContext\User\Application\Service\UserProfileService;
+use App\Shared\Domain\ValueObject\UserId;
 
 class GetUserProfileHandler
 {
@@ -18,7 +18,7 @@ class GetUserProfileHandler
 
     public function handle(GetUserProfile $query): UserProfileResponse
     {
-        $userId = new Id($query->getUserId());
+        $userId = new UserId($query->getUserId());
 
         $profile = $this->userProfileService->getProfile(
             $userId

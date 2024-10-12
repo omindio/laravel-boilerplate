@@ -44,7 +44,7 @@ class UserProfileController extends Controller
         }
     }
 
-    public function show(Request $request)
+    public function getProfile(Request $request)
     {
         try {
             $userId = $request->user()->id;

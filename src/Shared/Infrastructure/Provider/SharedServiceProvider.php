@@ -22,5 +22,8 @@ class SharedServiceProvider extends ServiceProvider
         $this->app->register(ExceptionServiceProvider::class);
     }
 
-    public function boot(): void {}
+    public function boot(): void
+    {
+        $this->loadMigrationsFrom(__DIR__ . '/../../Infrastructure/Persistence/Eloquent/Migration');
+    }
 }

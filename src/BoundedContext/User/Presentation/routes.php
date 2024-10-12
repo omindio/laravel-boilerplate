@@ -10,7 +10,7 @@ Route::group(
         Route::middleware('auth:sanctum')->group(function () {
             Route::put('/password', [UserPasswordController::class, 'update']);
             Route::put('/profile', [UserProfileController::class, 'update']);
-            Route::get('/profile', [UserProfileController::class, 'show']);
+            Route::get('/profile', [UserProfileController::class, 'getProfile']);
         });
     }
 );

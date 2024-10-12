@@ -2,7 +2,7 @@
 
 namespace App\Shared\Infrastructure\Provider;
 
-use App\Shared\Infrastructure\Persistence\EloquentTransactionManager;
+use App\Shared\Infrastructure\Persistence\Eloquent\EloquentTransactionManager;
 use App\Shared\Application\Contract\TransactionManagerInterface;
 use Illuminate\Support\ServiceProvider;
 

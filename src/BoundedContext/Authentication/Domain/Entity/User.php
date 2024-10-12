@@ -1,29 +1,24 @@
 <?php
 
-namespace App\BoundedContext\User\Domain\Entity;
+namespace App\BoundedContext\Authentication\Domain\Entity;
 
 use App\Shared\Domain\ValueObject\Email;
 use App\Shared\Domain\ValueObject\Password;
 use App\Shared\Domain\ValueObject\UserId;
-use App\BoundedContext\User\Domain\ValueObject\Profile;
 
 class User
 {
     private UserId $id;
-    private Profile $profile;
     private Email $email;
     private Password $password;
-    private string $createdAt;
     private array $roles;
     private array $permissions;
 
-    public function __construct(UserId $id, Profile $profile, Email $email, Password $password, string $createdAt, array $roles, array $permissions)
+    public function __construct(UserId $id, Email $email, Password $password, array $roles, array $permissions)
     {
         $this->id = $id;
-        $this->profile = $profile;
         $this->email = $email;
         $this->password = $password;
-        $this->createdAt = $createdAt;
         $this->roles = $roles;
         $this->permissions = $permissions;
     }
@@ -31,11 +26,6 @@ class User
     public function getId(): UserId
     {
         return $this->id;
-    }
-
-    public function getProfile(): Profile
-    {
-        return $this->profile;
     }
 
     public function getEmail(): Email
@@ -48,11 +38,6 @@ class User
         return $this->password;
     }
 
-    public function getCreatedAt(): string
-    {
-        return $this->createdAt;
-    }
-
     public function getRoles(): array
     {
         return $this->roles;
@@ -63,11 +48,6 @@ class User
         return $this->permissions;
     }
 
-    public function setProfile(Profile $newProfile)
-    {
-        $this->profile = $newProfile;
-    }
-
     public function setEmail(Email $newEmail)
     {
         $this->email = $newEmail;
@@ -76,11 +56,6 @@ class User
     public function setPassword(Password $newHashedPassword)
     {
         $this->password = $newHashedPassword;
-    }
-
-    public function setCreatedAt(string $newCreatedAt)
-    {
-        $this->createdAt = $newCreatedAt;
     }
 
     public function setRoles(array $newRoles)
