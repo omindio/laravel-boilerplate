@@ -16,7 +16,6 @@ class EloquentUserDatabaseMapper
             new UserId($model->id),
             new Email($model->email),
             new Password($model->password, true),
-            $model->createdAt,
             $model->roles,
             $model->permissions,
         );

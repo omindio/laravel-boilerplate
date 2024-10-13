@@ -2,7 +2,7 @@
 
 namespace App\BoundedContext\Authentication\Application\Command;
 
-class AuthenticateUserSession
+class LoginUserSession
 {
     private string $email;
     private string $password;

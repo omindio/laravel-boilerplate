@@ -2,9 +2,9 @@
 
 namespace App\BoundedContext\Authentication\Presentation\Controller;
 
-use App\BoundedContext\Authentication\Application\Command\AuthenticateUserSession;
+use App\BoundedContext\Authentication\Application\Command\LoginUserSession;
+use App\BoundedContext\Authentication\Application\Command\LogoutUserSession;
 use App\BoundedContext\Authentication\Presentation\Request\LoginRequest;
-use Illuminate\Http\Request;
 use App\Shared\Application\Contract\CommandBusInterface;
 use App\Shared\Presentation\Controller;
 use App\Shared\Domain\Exception\BaseException;
@@ -23,7 +23,7 @@ class SessionAuthenticationController extends Controller
         try {
             $data = $request->validated();
 
-            $authenticateCommand = new AuthenticateUserSession(
+            $authenticateCommand = new LoginUserSession(
                 $data['email'],
                 $data['password']
             );
@@ -36,8 +36,13 @@ class SessionAuthenticationController extends Controller
         }
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
-        return $this->successResponse('Has cerrado sesión correctamente.');
+        try {
+            $this->commandBus->execute(new LogoutUserSession());
+            return $this->successResponse('Has cerrado sesión correctamente.');
+        } catch (BaseException $e) {
+            return $this->errorResponse($e->getMessage(), [], $e->getStatusCode());
+        }
     }
 }
