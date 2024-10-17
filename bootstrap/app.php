@@ -2,13 +2,12 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Middleware;
-use App\Domain\Auth\Http\Middlewares\ThrottleForgotPasswordRequests;
+//use App\Domain\Auth\Http\Middlewares\ThrottleForgotPasswordRequests;
 //use App\Domains\Auth\Http\Middlewares\CustomBasicAuthMiddleware;
 
-//TODO: Revisar añadir un error 500 si no hay condicion de excepcion
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        api: __DIR__ . '/../src/Shared/Presentation/Routes.php',
+        api: __DIR__ . '/../app/Shared/Presentation/Routes.php',
         apiPrefix: '/',
     )
     ->withMiddleware(function (Middleware $middleware) {
