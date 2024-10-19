@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\ValueObject;
+namespace App\BoundedContext\User\Domain\ValueObject;
 
 use App\BoundedContext\User\Domain\Exception\EmptyNameException;
 

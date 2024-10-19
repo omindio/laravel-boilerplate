@@ -7,6 +7,7 @@ use App\BoundedContext\Authentication\Domain\Entity\Role;
 use App\BoundedContext\Authentication\Domain\Entity\Permission;
 use App\BoundedContext\Authentication\Domain\ValueObject\PermissionCollection;
 use App\BoundedContext\Authentication\Domain\ValueObject\RoleCollection;
+use App\BoundedContext\Authentication\Domain\ValueObject\UserName;
 use App\Shared\Domain\ValueObject\Email;
 use App\Shared\Domain\ValueObject\Password;
 use App\Shared\Domain\ValueObject\UserId;
@@ -21,6 +22,7 @@ class EloquentUserDatabaseMapper
 
         return new User(
             new UserId($model->id),
+            new UserName($model->name),
             new Email($model->email),
             new Password($model->password, true),
             new RoleCollection($roles),

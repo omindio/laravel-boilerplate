@@ -10,14 +10,16 @@ Route::group(
     function () {
         Route::middleware(['web'])->group(function () {
             Route::post('/session/login', [SessionAuthenticationController::class, 'login']);
+
+            Route::middleware('auth:sanctum')->group(function () {
+                Route::post('/session/logout', [SessionAuthenticationController::class, 'logout']);
+                Route::get('/user', [AuthenticationController::class, 'user']);
+            });
         });
 
         //Route::post('/forgot-password', [ForgotPasswordController::class, 'forgotPassword'])->middleware('throttle.forgot.password');
         //Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword']);
 
-        Route::middleware('auth:sanctum')->group(function () {
-            Route::post('/session/logout', [SessionAuthenticationController::class, 'logout']);
-            Route::get('/user', [AuthenticationController::class, 'user']);
-        });
+
     }
 );

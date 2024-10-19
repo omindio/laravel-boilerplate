@@ -4,15 +4,22 @@ namespace App\BoundedContext\Authentication\Application\Response;
 
 class UserAuthenticatedResponse
 {
+    protected $name;
     protected $email;
     protected $roles;
     protected $permissions;
 
-    public function __construct(string $email, array $roles, array $permissions)
+    public function __construct(string $name, string $email, array $roles, array $permissions)
     {
+        $this->name = $name;
         $this->email = $email;
         $this->roles = $roles;
         $this->permissions = $permissions;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
     }
 
     public function getEmail(): string
@@ -33,6 +40,7 @@ class UserAuthenticatedResponse
     public function toArray(): array
     {
         return [
+            'name' => $this->name,
             'email' => $this->email,
             'roles' => $this->roles,
             'permissions' => $this->permissions,

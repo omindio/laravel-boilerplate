@@ -9,6 +9,8 @@ use App\Shared\Application\Contract\CommandBusInterface;
 use App\Shared\Presentation\Controller;
 use App\Shared\Domain\Exception\BaseException;
 
+use Illuminate\Support\Facades\Auth;
+
 class SessionAuthenticationController extends Controller
 {
     private CommandBusInterface $commandBus;
@@ -31,6 +33,19 @@ class SessionAuthenticationController extends Controller
             $response = $this->commandBus->dispatch($authenticateCommand);
 
             return $this->successResponse('Has iniciado sesión correctamente.', $response->toArray());
+
+            /*
+
+            $credentials = $request->only('email', 'password');
+
+            if (!Auth::guard('web')->loginUsingId(1)) {
+                return response()->json(['message' => 'Invalid credentials'], 401);
+            }
+
+            $request->session()->regenerate();
+
+            return $this->successResponse('Has iniciado sesión correctamente.', [Auth::user()]);
+            */
         } catch (BaseException $e) {
             return $this->errorResponse($e->getMessage(), [], $e->getStatusCode());
         }

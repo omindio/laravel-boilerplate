@@ -36,7 +36,7 @@ class AuthenticationSessionService
             throw new IncorrectPasswordException('La contraseña no es correcta.');
         }
 
-        //$this->sessionService->createSession($user);
+        $this->sessionService->createSession($user);
 
         return $user;
     }

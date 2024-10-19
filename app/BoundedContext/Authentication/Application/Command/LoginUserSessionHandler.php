@@ -27,6 +27,6 @@ class LoginUserSessionHandler
             $password
         );
 
-        return new UserAuthenticatedResponse($user->getEmail()->value(), $user->getRoles()->toArray(), $user->getPermissions()->toArray());
+        return new UserAuthenticatedResponse($user->getName()->value(), $user->getEmail()->value(), $user->getRoles()->toArray(), $user->getPermissions()->toArray());
     }
 }

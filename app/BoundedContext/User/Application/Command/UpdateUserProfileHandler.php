@@ -6,8 +6,8 @@ use App\BoundedContext\User\Application\Command\UpdateUserProfile;
 use App\BoundedContext\User\Application\Response\UserProfileResponse;
 use App\BoundedContext\User\Application\Service\UserProfileService;
 use App\BoundedContext\User\Domain\ValueObject\Profile;
-use App\Domain\ValueObject\Name;
-use App\Domain\ValueObject\Surname;
+use App\BoundedContext\User\Domain\ValueObject\Name;
+use App\BoundedContext\User\Domain\ValueObject\Surname;
 use App\Shared\Domain\ValueObject\UserId;
 
 class UpdateUserProfileHandler

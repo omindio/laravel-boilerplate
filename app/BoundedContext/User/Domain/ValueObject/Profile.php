@@ -2,8 +2,8 @@
 
 namespace App\BoundedContext\User\Domain\ValueObject;
 
-use App\Domain\ValueObject\Name;
-use App\Domain\ValueObject\Surname;
+use App\BoundedContext\User\Domain\ValueObject\Name;
+use App\BoundedContext\User\Domain\ValueObject\Surname;
 
 class Profile
 {

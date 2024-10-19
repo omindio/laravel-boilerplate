@@ -7,26 +7,21 @@ use App\Shared\Infrastructure\Persistence\Eloquent\Model\UserModel;
 use App\BoundedContext\Authentication\Application\Contract\AuthenticationSessionServiceInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
 
 class LaravelAuthenticationSessionService implements AuthenticationSessionServiceInterface
 {
     public function createSession(User $user): void
     {
-        $userModel = new UserModel();
-
-        $userModel->id = $user->getId()->value();
-        $userModel->email = $user->getEmail()->value();
-        $userModel->password = $user->getPassword()->value();
-
-        Auth::guard('web')->login($userModel);
-
+        Auth::guard('web')->loginUsingId($user->getId()->value());
         Session::regenerate();
+        //dd(session()->getId());
     }
 
     public function closeSession(): void
     {
         Auth::guard('web')->logout();
-        Session::invalidate();
-        Session::regenerateToken();
+        session()->invalidate();
+        session()->regenerateToken();
     }
 }

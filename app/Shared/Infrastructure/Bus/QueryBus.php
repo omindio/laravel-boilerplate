@@ -24,7 +24,7 @@ class QueryBus implements QueryBusInterface
         $this->middlewares[] = $middleware;
     }
 
-    public function dispatch($query)
+    public function ask($query)
     {
         $handler = $this->locator->getHandler($query);
         $method = $this->inflector->inflect($query);

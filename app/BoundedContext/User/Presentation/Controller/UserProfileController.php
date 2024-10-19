@@ -51,7 +51,7 @@ class UserProfileController extends Controller
 
             $getProfileQuery = new GetUserProfile($userId);
 
-            $response = $this->queryBus->dispatch($getProfileQuery);
+            $response = $this->queryBus->ask($getProfileQuery);
 
             return $this->successResponse('Profile retrieved successfully.', $response->toArray());
         } catch (BaseException $e) {

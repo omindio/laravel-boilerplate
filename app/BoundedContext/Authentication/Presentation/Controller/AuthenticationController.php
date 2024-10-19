@@ -25,9 +25,9 @@ class AuthenticationController extends Controller
 
             $getUserQuery = new GetUserAuthenticated($userId);
 
-            $response = $this->queryBus->dispatch($getUserQuery);
+            $response = $this->queryBus->ask($getUserQuery);
 
-            return $this->successResponse('La contraseña se ha cambiado correctamente.', $response->toArray());
+            return $this->successResponse('Estás autenticado correctamente.', $response->toArray());
         } catch (BaseException $e) {
             return $this->errorResponse($e->getMessage(), [], $e->getStatusCode());
         }
