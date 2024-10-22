@@ -16,6 +16,7 @@ class SharedServiceProvider extends ServiceProvider
     {
         $this->app->register(RateLimiterServiceProvider::class);
         $this->app->register(PasswordServiceProvider::class);
+        $this->app->register(CaptchaServiceProvider::class);
         $this->app->register(TransactionServiceProvider::class);
         $this->app->register(BoundedContextServiceProvider::class);
         $this->app->register(CommandQueryServiceProvider::class);

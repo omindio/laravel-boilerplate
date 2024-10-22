@@ -5,7 +5,7 @@ namespace App\BoundedContext\User\Application\Service;
 use App\Shared\Domain\Contract\PasswordServiceInterface;
 use App\BoundedContext\User\Domain\Contract\UserCommandRepositoryInterface;
 use App\BoundedContext\User\Domain\Contract\UserQueryRepositoryInterface;
-use App\BoundedContext\User\Domain\ValueObject\UpdatePassword;
+use App\Shared\Domain\ValueObject\UpdatePassword;
 use App\Shared\Domain\ValueObject\UserId;
 use App\Shared\Domain\ValueObject\Password;
 use App\Shared\Domain\Exception\UserNotFoundException;

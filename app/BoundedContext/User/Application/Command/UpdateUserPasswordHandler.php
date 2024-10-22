@@ -4,7 +4,7 @@ namespace App\BoundedContext\User\Application\Command;
 
 use App\BoundedContext\User\Application\Command\UpdateUserPassword;
 use App\BoundedContext\User\Application\Service\UserPasswordService;
-use App\BoundedContext\User\Domain\ValueObject\UpdatePassword;
+use App\Shared\Domain\ValueObject\UpdatePassword;
 use App\Shared\Domain\ValueObject\UserId;
 
 class UpdateUserPasswordHandler

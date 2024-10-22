@@ -1,10 +1,10 @@
 <?php
 
-namespace App\BoundedContext\Auth\Http\Requests;
+namespace App\BoundedContext\Authentication\Presentation\Request;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Shared\Presentation\Request;
 
-class ResetPasswordRequest extends FormRequest
+class ResetPasswordRequest extends Request
 {
     public function authorize()
     {
@@ -16,15 +16,8 @@ class ResetPasswordRequest extends FormRequest
         return [
             'email' => 'required|email',
             'token' => 'required',
-            'password' => 'required|min:8|confirmed',
-        ];
-    }
-
-    public function attributes()
-    {
-        return [
-            'password' => 'password',
-            'passwordConfirmation' => 'password_confirmation',
+            'newPassword' => 'required|string|min:8',
+            'confirmPassword' => 'required|string|same:newPassword',
         ];
     }
 }

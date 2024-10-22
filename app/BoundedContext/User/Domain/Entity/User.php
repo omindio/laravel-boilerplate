@@ -6,6 +6,9 @@ use App\Shared\Domain\ValueObject\Email;
 use App\Shared\Domain\ValueObject\Password;
 use App\Shared\Domain\ValueObject\UserId;
 use App\BoundedContext\User\Domain\ValueObject\Profile;
+use App\BoundedContext\User\Domain\ValueObject\RoleCollection;
+use App\BoundedContext\User\Domain\ValueObject\PermissionCollection;
+use App\BoundedContext\User\Domain\Entity\Role;
 
 class User
 {
@@ -13,11 +16,11 @@ class User
     private Profile $profile;
     private Email $email;
     private Password $password;
+    private RoleCollection $roles;
+    private PermissionCollection $permissions;
     private string $createdAt;
-    private array $roles;
-    private array $permissions;
 
-    public function __construct(UserId $id, Profile $profile, Email $email, Password $password, string $createdAt, array $roles, array $permissions)
+    public function __construct(UserId $id, Profile $profile, Email $email, Password $password, RoleCollection $roles, PermissionCollection $permissions, string $createdAt)
     {
         $this->id = $id;
         $this->profile = $profile;
@@ -53,12 +56,12 @@ class User
         return $this->createdAt;
     }
 
-    public function getRoles(): array
+    public function getRoles(): RoleCollection
     {
         return $this->roles;
     }
 
-    public function getPermissions(): array
+    public function getPermissions(): PermissionCollection
     {
         return $this->permissions;
     }
@@ -83,13 +86,23 @@ class User
         $this->createdAt = $newCreatedAt;
     }
 
-    public function setRoles(array $newRoles)
+    public function setRoles(RoleCollection $newRoles)
     {
         $this->roles = $newRoles;
     }
 
-    public function setPermissions(array $newPermissions)
+    public function setPermissions(PermissionCollection $newPermissions)
     {
         $this->permissions = $newPermissions;
+    }
+
+    public function addRole(Role $role)
+    {
+        $this->roles->add($role);
+    }
+
+    public function hasRole(Role $role): bool
+    {
+        return $this->roles->has($role);
     }
 }

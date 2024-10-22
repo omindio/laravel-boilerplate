@@ -1,13 +1,13 @@
 <?php
 
-namespace App\BoundedContext\Auth\Notifications;
+namespace App\BoundedContext\Authentication\Infrastructure\Notification;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ResetPasswordNotification extends Notification implements ShouldQueue
+class RequestPasswordResetNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-//use App\BoundedContext\Auth\Http\Controllers\ForgotPasswordController;
+use App\BoundedContext\Authentication\Presentation\Controller\PasswordResetController;
 use App\BoundedContext\Authentication\Presentation\Controller\SessionAuthenticationController;
 use App\BoundedContext\Authentication\Presentation\Controller\AuthenticationController;
 
@@ -17,9 +17,7 @@ Route::group(
             });
         });
 
-        //Route::post('/forgot-password', [ForgotPasswordController::class, 'forgotPassword'])->middleware('throttle.forgot.password');
-        //Route::post('/reset-password', [ForgotPasswordController::class, 'resetPassword']);
-
-
+        Route::post('/password/request', [PasswordResetController::class, 'requestPasswordReset'])->middleware('throttle.forgot.password');
+        Route::post('/password/reset', [PasswordResetController::class, 'resetPassword']);
     }
 );

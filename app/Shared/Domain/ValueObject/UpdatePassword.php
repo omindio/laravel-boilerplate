@@ -1,9 +1,9 @@
 <?php
 
-namespace App\BoundedContext\User\Domain\ValueObject;
+namespace App\Shared\Domain\ValueObject;
 
 use App\Shared\Domain\ValueObject\Password;
-use App\BoundedContext\User\Domain\Exception\SamePasswordException;
+use App\Shared\Domain\Exception\SamePasswordException;
 
 class UpdatePassword
 {
@@ -12,7 +12,6 @@ class UpdatePassword
 
     public function __construct(string $currentPassword, string $newPassword)
     {
-        //TODO: Comprobar que las contrasñeas no son iguales
         if ($currentPassword === $newPassword) {
             throw new SamePasswordException();
         }

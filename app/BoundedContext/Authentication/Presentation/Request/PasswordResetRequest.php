@@ -1,10 +1,10 @@
 <?php
 
-namespace App\BoundedContext\Auth\Http\Requests;
+namespace App\BoundedContext\Authentication\Presentation\Request;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Shared\Presentation\Request;
 
-class ForgotPasswordRequest extends FormRequest
+class PasswordResetRequest extends Request
 {
     public function authorize()
     {

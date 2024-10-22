@@ -3,9 +3,11 @@
 namespace App\BoundedContext\User\Infrastructure\Provider;
 
 use Illuminate\Support\ServiceProvider;
+
+use App\BoundedContext\User\Application\Contract\UserDatabaseMapperInterface;
 use App\BoundedContext\User\Infrastructure\Persistence\Eloquent\EloquentUserCommandRepository;
 use App\BoundedContext\User\Infrastructure\Persistence\Eloquent\EloquentUserQueryRepository;
-
+use App\BoundedContext\User\Infrastructure\Persistence\Eloquent\Mapper\EloquentUserDatabaseMapper;
 use App\BoundedContext\User\Domain\Contract\UserCommandRepositoryInterface;
 use App\BoundedContext\User\Domain\Contract\UserQueryRepositoryInterface;
 
@@ -15,6 +17,7 @@ class UserServiceProvider extends ServiceProvider
     {
         $this->app->bind(UserCommandRepositoryInterface::class, EloquentUserCommandRepository::class);
         $this->app->bind(UserQueryRepositoryInterface::class, EloquentUserQueryRepository::class);
+        $this->app->bind(UserDatabaseMapperInterface::class, EloquentUserDatabaseMapper::class);
     }
 
     public function boot(): void {}

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\BoundedContext\User\Domain\Exception;
+namespace App\Shared\Domain\Exception;
 
 use App\Shared\Domain\Exception\BaseException;
 
