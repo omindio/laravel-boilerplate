@@ -1,4 +1,4 @@
-# Laravel DDD & CQRS principles
+# Laravel boilerplate with DDD & CQRS principles
 
 > [!IMPORTANT]
 > Be sure you have installed _docker_ and _vscode_.
