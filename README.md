@@ -1,4 +1,4 @@
-# Installation
+# Laravel DDD & CQRS principles
 
 > [!IMPORTANT]
 > Be sure you have installed _docker_ and _vscode_.
