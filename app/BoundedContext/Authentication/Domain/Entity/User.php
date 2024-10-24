@@ -57,4 +57,9 @@ class User
     {
         return $this->permissions;
     }
+
+    public function setPassword(Password $password): void
+    {
+        $this->password = $password;
+    }
 }

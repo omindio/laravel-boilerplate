@@ -7,18 +7,25 @@ use App\BoundedContext\Authentication\Domain\Exception\EmptyPasswordResetTokenEx
 class PasswordResetToken
 {
     private string $token;
+    private ?string $createdAt;
 
-    public function __construct(string $token)
+    public function __construct(string $token, ?string $createdAt = null)
     {
         if (empty($token)) {
             throw new EmptyPasswordResetTokenException();
         }
 
         $this->token = $token;
+        $this->createdAt = $createdAt;
     }
 
-    public function value(): string
+    public function getToken(): string
     {
         return $this->token;
+    }
+
+    public function getCreatedAt(): ?string
+    {
+        return $this->createdAt;
     }
 }

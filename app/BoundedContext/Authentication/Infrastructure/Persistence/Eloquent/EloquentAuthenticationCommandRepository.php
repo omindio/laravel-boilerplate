@@ -5,6 +5,8 @@ namespace App\BoundedContext\Authentication\Infrastructure\Persistence\Eloquent;
 use App\BoundedContext\Authentication\Application\Contract\UserDatabaseMapperInterface;
 use App\BoundedContext\Authentication\Domain\Contract\AuthenticationCommandRepositoryInterface;
 use App\BoundedContext\Authentication\Domain\Entity\User;
+use App\Shared\Domain\ValueObject\Email;
+use Illuminate\Support\Facades\DB;
 use App\BoundedContext\Authentication\Domain\ValueObject\PasswordResetToken;
 use Illuminate\Support\Facades\Password;
 
@@ -17,11 +19,19 @@ class EloquentAuthenticationCommandRepository implements AuthenticationCommandRe
         $this->userDatabaseMapper = $userDatabaseMapper;
     }
 
-    public function createPasswordResetToken(User $user): PasswordResetToken
+    public function createPasswordToken(User $user): PasswordResetToken
     {
         $userModel = $this->userDatabaseMapper->toModel($user);
         $token = Password::createToken($userModel);
 
         return new PasswordResetToken($token);
+    }
+
+    public function deletePasswordToken(Email $email, PasswordResetToken $token): void
+    {
+        DB::table(config('auth.passwords.users.table', 'password_reset_tokens'))
+            ->where('email', $email->value())
+            ->where('token', $token->getToken())
+            ->delete();
     }
 }

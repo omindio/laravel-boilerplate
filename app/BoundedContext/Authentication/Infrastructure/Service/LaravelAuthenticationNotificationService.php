@@ -19,7 +19,7 @@ class LaravelAuthenticationNotificationService implements AuthenticationNotifica
     public function sendPasswordResetNotification(User $user, PasswordResetToken $token): void
     {
         $userModel = $this->userDatabaseMapper->toModel($user);
-        $userModel->notify(new RequestPasswordResetNotification($token->value(), $user->getEmail()->value()));
+        $userModel->notify(new RequestPasswordResetNotification($token->getToken(), $user->getEmail()->value()));
     }
     /*
     private function mapUserToModel(User $user): UserModel

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Shared\Domain\ValueObject;
+namespace App\BoundedContext\User\Domain\ValueObject;
 
 use App\Shared\Domain\ValueObject\Password;
 use App\Shared\Domain\Exception\SamePasswordException;

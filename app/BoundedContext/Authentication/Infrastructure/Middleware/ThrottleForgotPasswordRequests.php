@@ -1,9 +1,8 @@
 <?php
 
-namespace App\BoundedContext\Auth\Http\Middlewares;
+namespace App\BoundedContext\Authentication\Infrastructure\Middleware;
 
 use Closure;
-use App\Infrastructure\Http\Responses\ApiErrorResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Support\Facades\RateLimiter;
@@ -15,7 +14,9 @@ class ThrottleForgotPasswordRequests extends ThrottleRequests
         $key = $this->resolveRequestSignature($request);
 
         if (RateLimiter::tooManyAttempts($key, $maxAttempts)) {
-            return ApiErrorResponse::send('Demasiados intentos de restablecimiento de contraseña. Por favor, inténtelo de nuevo en ' . $decayMinutes . ' minutos.', [], 429);
+            return response()->json([
+                'message' => 'Demasiados intentos de restablecimiento de contraseña. Por favor, inténtelo de nuevo en ' . $decayMinutes . ' minutos.',
+            ], 429);
         }
         RateLimiter::hit($key, $decayMinutes * 60);
 

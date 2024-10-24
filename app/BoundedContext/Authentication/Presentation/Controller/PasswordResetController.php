@@ -2,6 +2,7 @@
 
 namespace App\BoundedContext\Authentication\Presentation\Controller;
 
+use App\BoundedContext\Authentication\Application\Command\PasswordReset;
 use App\BoundedContext\Authentication\Application\Command\RequestPasswordReset;
 use App\BoundedContext\Authentication\Presentation\Request\PasswordResetRequest;
 use App\BoundedContext\Authentication\Presentation\Request\ResetPasswordRequest;
@@ -30,9 +31,9 @@ class PasswordResetController extends Controller
                 $request->ip()
             );
 
-            $response = $this->commandBus->dispatch($requestPasswordReset);
+            $this->commandBus->dispatch($requestPasswordReset);
 
-            return $this->successResponse('El cambio de contraseña ha sido procesado correctamente. Hemos enviado un enlace de restablecimiento de contraseña a su correo electrónico.', $response->toArray());
+            return $this->successResponse('El cambio de contraseña ha sido procesado correctamente. Hemos enviado un enlace de restablecimiento de contraseña a su correo electrónico.');
         } catch (BaseException $e) {
             return $this->errorResponse($e->getMessage(), [], $e->getStatusCode());
         }
@@ -41,10 +42,15 @@ class PasswordResetController extends Controller
     public function resetPassword(ResetPasswordRequest $request)
     {
         try {
-            //$this->forgotPasswordService->resetPassword($request);
-            //return ApiSuccessResponse::send([], 'La contraseña se ha actualizado correctamente.');
+            $data = $request->validated();
+
+            $passwordReset = new PasswordReset($data['email'], $data['newPassword'], $data['confirmPassword'], $data['token']);
+
+            $this->commandBus->dispatch($passwordReset);
+
+            return $this->successResponse('La contraseña se ha actualizado correctamente.');
         } catch (BaseException $e) {
-            //return ApiErrorResponse::send($e->getMessage(), [], $e->getStatusCode());
+            return $this->errorResponse($e->getMessage(), [], $e->getStatusCode());
         }
     }
 }

@@ -3,6 +3,7 @@
 namespace App\BoundedContext\Authentication\Application\Command;
 
 use App\BoundedContext\Authentication\Application\Service\PasswordResetService;
+use App\BoundedContext\Authentication\Application\Command\RequestPasswordReset;
 use App\Shared\Domain\ValueObject\CaptchaToken;
 use App\Shared\Domain\ValueObject\Email;
 use App\Shared\Domain\ValueObject\Ip;

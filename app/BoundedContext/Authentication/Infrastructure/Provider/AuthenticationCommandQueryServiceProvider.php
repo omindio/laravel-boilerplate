@@ -9,6 +9,10 @@ use App\BoundedContext\Authentication\Application\Command\LoginUserSession;
 use App\BoundedContext\Authentication\Application\Command\LoginUserSessionHandler;
 use App\BoundedContext\Authentication\Application\Command\LogoutUserSession;
 use App\BoundedContext\Authentication\Application\Command\LogoutUserSessionHandler;
+use App\BoundedContext\Authentication\Application\Command\PasswordReset;
+use App\BoundedContext\Authentication\Application\Command\PasswordResetHandler;
+use App\BoundedContext\Authentication\Application\Command\RequestPasswordReset;
+use App\BoundedContext\Authentication\Application\Command\RequestPasswordResetHandler;
 use App\BoundedContext\Authentication\Application\Query\GetUserAuthenticated;
 use App\BoundedContext\Authentication\Application\Query\GetUserAuthenticatedHandler;
 
@@ -21,6 +25,8 @@ class AuthenticationCommandQueryServiceProvider extends ServiceProvider
 
         $commandBus->register(LoginUserSession::class, LoginUserSessionHandler::class);
         $commandBus->register(LogoutUserSession::class, LogoutUserSessionHandler::class);
+        $commandBus->register(RequestPasswordReset::class, RequestPasswordResetHandler::class);
+        $commandBus->register(PasswordReset::class, PasswordResetHandler::class);
         $queryBus->register(GetUserAuthenticated::class, GetUserAuthenticatedHandler::class);
     }
 

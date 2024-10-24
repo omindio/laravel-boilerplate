@@ -18,7 +18,7 @@ class EloquentUserCommandRepository implements UserCommandRepositoryInterface
 
     public function updatePassword(User $user): bool
     {
-        return $this->model::where('id', $user->getId())->update(['password' => $user->getPassword()->value()]);
+        return $this->model::where('id', $user->getId()->value())->update(['password' => $user->getPassword()->value()]);
     }
 
     public function updateProfile(User $user): bool

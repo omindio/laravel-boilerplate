@@ -8,9 +8,9 @@ Route::middleware(['throttle:api'])->group(function () {
         return response()->json(['status' => 'ok']);
     });
 
-    $domainDirectories = glob(base_path('app/BoundedContext/*/Presentation/routes.php'));
+    $boundedContextDirectories = glob(base_path('app/BoundedContext/*/Presentation/routes.php'));
 
-    foreach ($domainDirectories as $routeFile) {
+    foreach ($boundedContextDirectories as $routeFile) {
         require $routeFile;
     }
 });
