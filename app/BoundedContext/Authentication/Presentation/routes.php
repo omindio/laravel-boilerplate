@@ -18,6 +18,6 @@ Route::group(
         });
 
         Route::post('/password/request', [PasswordResetController::class, 'requestPasswordReset'])->middleware('throttle.forgot.password');
-        Route::post('/password/reset', [PasswordResetController::class, 'resetPassword']);
+        Route::post('/password/reset', [PasswordResetController::class, 'passwordReset']);
     }
 );

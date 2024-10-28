@@ -23,6 +23,6 @@ class PasswordResetHandler
         $updatePassword = new UpdatePassword($command->getNewPassword(), $command->getConfirmPassword());
         $token = new PasswordResetToken($command->getToken());
 
-        $this->passwordResetService->resetPassword($email, $updatePassword, $token);
+        $this->passwordResetService->passwordReset($email, $updatePassword, $token);
     }
 }

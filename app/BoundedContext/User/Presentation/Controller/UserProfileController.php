@@ -28,7 +28,7 @@ class UserProfileController extends Controller
         try {
             $data = $request->validated();
 
-            $userId = $request->user()->id;
+            $userId = $this->authenticatedId();
 
             $updateProfileCommand = new UpdateUserProfile(
                 $userId,

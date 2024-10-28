@@ -22,7 +22,7 @@ class UserPasswordController extends Controller
         try {
             $data = $request->validated();
 
-            $userId = $request->user()->id;
+            $userId = $this->authenticatedId();
 
             $updatePasswordCommand = new UpdateUserPassword(
                 $userId,

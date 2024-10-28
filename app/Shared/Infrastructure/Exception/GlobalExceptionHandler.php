@@ -17,28 +17,28 @@ class GlobalExceptionHandler extends ExceptionHandler
         if ($exception instanceof AuthenticationException) {
             return response()->json([
                 'success' => false,
-                'message' => 'Unauthenticated. Please login to access this resource.'
+                'message' => 'No autenticado. Inicia sesión para acceder.'
             ], 401);
         }
 
         if ($exception instanceof AuthorizationException) {
             return response()->json([
                 'success' => false,
-                'message' => 'Unauthorized. You do not have the required permissions.'
+                'message' => 'No autorizado. No tienes los permisos necesarios.'
             ], 403);
         }
 
         if ($exception instanceof NotFoundHttpException) {
             return response()->json([
                 'success' => false,
-                'message' => 'Resource not found.'
+                'message' => 'Recurso no encontrado.'
             ], 404);
         }
 
         if ($exception instanceof TokenMismatchException) {
             return response()->json([
                 'success' => false,
-                'message' => 'CSRF token mismatch. Please refresh the page and try again.'
+                'message' => 'Actualiza la página y inténtalo de nuevo. El token CSRF no coincide.'
             ], 419);
         }
 

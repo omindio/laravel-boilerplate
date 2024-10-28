@@ -70,7 +70,7 @@ class PasswordResetService
         $this->notificationService->sendPasswordResetNotification($user, $token);
     }
 
-    public function resetPassword(Email $email, UpdatePassword $updatePassword, PasswordResetToken $token)
+    public function passwordReset(Email $email, UpdatePassword $updatePassword, PasswordResetToken $token)
     {
         $tokenResponse = $this->authenticationQueryRepository->findPasswordToken($email, $token);
 

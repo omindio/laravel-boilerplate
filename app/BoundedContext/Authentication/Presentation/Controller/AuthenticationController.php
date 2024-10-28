@@ -18,10 +18,10 @@ class AuthenticationController extends Controller
         $this->queryBus = $queryBus;
     }
 
-    public function user(Request $request)
+    public function user()
     {
         try {
-            $userId = $request->user()->id;
+            $userId = $this->authenticatedId();
 
             $getUserQuery = new GetUserAuthenticated($userId);
 
