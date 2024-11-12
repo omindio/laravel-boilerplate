@@ -24,8 +24,8 @@ class EloquentUserDatabaseMapper implements UserDatabaseMapperInterface
             throw new \InvalidArgumentException('Expected instance of UserModel');
         }
 
-        $roles = $userModel->roles->pluck('name')->map(fn($name) => new Role($name))->toArray();
-        $permissions = $userModel->permissions->pluck('name')->map(fn($name) => new Permission($name))->toArray();
+        $roles = $userModel->getRoleNames()->map(fn($name) => new Role($name))->toArray();
+        $permissions = $userModel->getPermissionNames()->map(fn($name) => new Permission($name))->toArray();
 
         return new User(
             new UserId($userModel->id),

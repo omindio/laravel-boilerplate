@@ -12,23 +12,23 @@ use App\Shared\Domain\ValueObject\UserId;
 class EloquentUserQueryRepository implements UserQueryRepositoryInterface
 {
     private UserModel $model;
-    private UserDatabaseMapperInterface $userDatabaseMapper;
+    private UserDatabaseMapperInterface $mapper;
 
     public function __construct(UserModel $userModel, UserDatabaseMapperInterface $userDatabaseMapper)
     {
         $this->model = $userModel;
-        $this->userDatabaseMapper = $userDatabaseMapper;
+        $this->mapper = $userDatabaseMapper;
     }
 
     public function findById(UserId $id): ?User
     {
         $userModel = $this->model::find($id->value());
-        return $userModel ? $this->userDatabaseMapper->toEntity($userModel) : null;
+        return $userModel ? $this->mapper->toEntity($userModel) : null;
     }
 
     public function findByEmail(Email $email): ?User
     {
         $userModel = $this->model::where('email', $email->value())->first();
-        return $userModel ? $this->userDatabaseMapper->toEntity($userModel) : null;
+        return $userModel ? $this->mapper->toEntity($userModel) : null;
     }
 }

@@ -4,10 +4,10 @@ namespace App\BoundedContext\Authentication\Application\Response;
 
 class UserAuthenticatedResponse
 {
-    protected $name;
-    protected $email;
-    protected $roles;
-    protected $permissions;
+    private string $name;
+    private string $email;
+    private array $roles;
+    private array $permissions;
 
     public function __construct(string $name, string $email, array $roles, array $permissions)
     {

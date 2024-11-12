@@ -5,6 +5,8 @@ namespace App\Shared\Infrastructure\Provider;
 use Illuminate\Support\ServiceProvider;
 use App\BoundedContext\User\Infrastructure\Provider\UserCommandQueryServiceProvider;
 use App\BoundedContext\Authentication\Infrastructure\Provider\AuthenticationCommandQueryServiceProvider;
+use App\BoundedContext\Authorization\Infrastructure\Provider\PermissionCommandQueryServiceProvider;
+use App\BoundedContext\Authorization\Infrastructure\Provider\RoleCommandQueryServiceProvider;
 use App\Shared\Infrastructure\Bus\CommandBus;
 use App\Shared\Application\Contract\CommandBusInterface;
 use App\Shared\Infrastructure\Bus\QueryBus;
@@ -60,6 +62,8 @@ class CommandQueryServiceProvider extends ServiceProvider
     {
         $this->app->register(UserCommandQueryServiceProvider::class);
         $this->app->register(AuthenticationCommandQueryServiceProvider::class);
+        $this->app->register(RoleCommandQueryServiceProvider::class);
+        $this->app->register(PermissionCommandQueryServiceProvider::class);
     }
 
     public function boot(): void {}

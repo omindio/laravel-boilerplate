@@ -3,30 +3,20 @@
 namespace App\BoundedContext\Authentication\Domain\ValueObject;
 
 use App\BoundedContext\Authentication\Domain\Entity\Role;
+use App\Shared\Domain\Collection\Collection;
 
-class RoleCollection
+class RoleCollection extends Collection
 {
-    /** @var Role[] */
-    private array $roles;
-
     /**
      * @param Role[] $roles
      */
     public function __construct(array $roles)
     {
-        $this->roles = $roles;
-    }
-
-    /**
-     * @return Role[]
-     */
-    public function all(): array
-    {
-        return $this->roles;
+        parent::__construct($roles);
     }
 
     public function toArray(): array
     {
-        return array_map(fn(Role $role) => $role->getName(), $this->roles);
+        return array_map(fn(Role $role) => $role->getName(), $this->items);
     }
 }

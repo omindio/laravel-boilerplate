@@ -6,19 +6,19 @@ use App\Shared\Domain\Exception\InvalidIpException;
 
 class Ip
 {
-    private string $value;
+    private string $ip;
 
-    public function __construct(string $value)
+    public function __construct(string $ip)
     {
-        if (!filter_var($value, FILTER_VALIDATE_IP)) {
+        if (!filter_var($ip, FILTER_VALIDATE_IP)) {
             throw new InvalidIpException();
         }
 
-        $this->value = $value;
+        $this->ip = $ip;
     }
 
     public function value(): string
     {
-        return $this->value;
+        return $this->ip;
     }
 }

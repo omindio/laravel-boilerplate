@@ -1,8 +1,8 @@
 <?php
 
-namespace App\BoundedContext\User\Application\DTOs;
+namespace App\BoundedContext\User\Application\Response;
 
-class UserDTO
+class UserResponse
 {
     private int $id;
     private string $name;

@@ -4,18 +4,16 @@ namespace App\BoundedContext\User\Domain\ValueObject;
 
 use App\BoundedContext\User\Domain\Entity\Role;
 use App\BoundedContext\User\Domain\Exception\RoleAlreadyExistsException;
+use App\Shared\Domain\Collection\Collection;
 
-class RoleCollection
+class RoleCollection extends Collection
 {
-    /** @var Role[] */
-    private array $roles;
-
     /**
      * @param Role[] $roles
      */
     public function __construct(array $roles)
     {
-        $this->roles = $roles;
+        parent::__construct($roles);
     }
 
     public function add(Role $role): void
@@ -23,12 +21,12 @@ class RoleCollection
         if ($this->has($role)) {
             throw new RoleAlreadyExistsException();
         }
-        $this->roles[] = $role;
+        $this->items[] = $role;
     }
 
     public function has(Role $role): bool
     {
-        foreach ($this->roles as $existingRole) {
+        foreach ($this->items as $existingRole) {
             if ($existingRole->getName() === $role->getName()) {
                 return true;
             }
@@ -36,16 +34,8 @@ class RoleCollection
         return false;
     }
 
-    /**
-     * @return Role[]
-     */
-    public function all(): array
-    {
-        return $this->roles;
-    }
-
     public function toArray(): array
     {
-        return array_map(fn(Role $role) => $role->getName(), $this->roles);
+        return array_map(fn(Role $role) => $role->getName(), $this->items);
     }
 }

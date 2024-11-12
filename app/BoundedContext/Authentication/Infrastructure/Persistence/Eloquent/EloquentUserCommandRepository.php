@@ -8,7 +8,6 @@ use App\BoundedContext\Authentication\Domain\Entity\User;
 
 class EloquentUserCommandRepository implements UserCommandRepositoryInterface
 {
-
     private UserModel $model;
 
     public function __construct(UserModel $userModel)

@@ -6,19 +6,19 @@ use App\Shared\Domain\Exception\EmptyCaptchaTokenException;
 
 class CaptchaToken
 {
-    private string $value;
+    private string $token;
 
-    public function __construct(string $value)
+    public function __construct(string $token)
     {
-        if (empty($value)) {
+        if (empty($token)) {
             throw new EmptyCaptchaTokenException();
         }
 
-        $this->value = $value;
+        $this->token = $token;
     }
 
     public function value(): string
     {
-        return $this->value;
+        return $this->token;
     }
 }

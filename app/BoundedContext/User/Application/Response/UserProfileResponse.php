@@ -4,8 +4,8 @@ namespace App\BoundedContext\User\Application\Response;
 
 class UserProfileResponse
 {
-    protected $name;
-    protected $surname;
+    private string $name;
+    private string $surname;
 
     public function __construct(string $name, string $surname)
     {

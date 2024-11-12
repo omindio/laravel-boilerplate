@@ -13,7 +13,11 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->throttleWithRedis();
         $middleware->statefulApi();
-        $middleware->alias(['throttle.forgot.password' => ThrottleForgotPasswordRequests::class]);
+        $middleware->alias([
+            'throttle.forgot.password' => ThrottleForgotPasswordRequests::class,
+            'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
+            'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
+        ]);
         //$middleware->alias(['custom.auth.basic' => CustomBasicAuthMiddleware::class]);
     })
     ->withExceptions()->create();
